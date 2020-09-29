@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="Vendor02SedeViewDlg" widgetVar="Vendor02SedeViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewVendor02SedeTitle}">
+            <h:form id="Vendor02SedeViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{vendor02SedeController.selected != null}">
+                        <h:outputText value="#{bundle.ViewVendor02SedeLabel_vendor02Id}"/>
+                        <h:outputText value="#{vendor02SedeController.selected.vendor02Id}" title="#{bundle.ViewVendor02SedeTitle_vendor02Id}"/>
+                        <h:outputText value="#{bundle.ViewVendor02SedeLabel_vendor01Id}"/>
+                        <h:outputText value="#{vendor02SedeController.selected.vendor01Id}" title="#{bundle.ViewVendor02SedeTitle_vendor01Id}"/>
+                        <h:outputText value="#{bundle.ViewVendor02SedeLabel_vendor02Via}"/>
+                        <h:outputText value="#{vendor02SedeController.selected.vendor02Via}" title="#{bundle.ViewVendor02SedeTitle_vendor02Via}"/>
+                        <h:outputText value="#{bundle.ViewVendor02SedeLabel_vendor02NumCivico}"/>
+                        <h:outputText value="#{vendor02SedeController.selected.vendor02NumCivico}" title="#{bundle.ViewVendor02SedeTitle_vendor02NumCivico}"/>
+                        <h:outputText value="#{bundle.ViewVendor02SedeLabel_vendor02017coIdComune}"/>
+                        <h:outputText value="#{vendor02SedeController.selected.vendor02017coIdComune}" title="#{bundle.ViewVendor02SedeTitle_vendor02017coIdComune}"/>
+                        <h:outputText value="#{bundle.ViewVendor02SedeLabel_vendor01Base}"/>
+                        <h:outputText value="#{vendor02SedeController.selected.vendor01Base}" title="#{bundle.ViewVendor02SedeTitle_vendor01Base}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="Vendor02SedeViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

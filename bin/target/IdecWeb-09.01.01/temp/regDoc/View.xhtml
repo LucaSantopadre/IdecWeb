@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="RegDocViewDlg" widgetVar="RegDocViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewRegDocTitle}">
+            <h:form id="RegDocViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{regDocController.selected != null}">
+                        <h:outputText value="#{bundle.ViewRegDocLabel_tipoDoc}"/>
+                        <h:outputText value="#{regDocController.selected.tipoDoc}" title="#{bundle.ViewRegDocTitle_tipoDoc}"/>
+                        <h:outputText value="#{bundle.ViewRegDocLabel_dataDoc}"/>
+                        <h:outputText value="#{regDocController.selected.dataDoc}" title="#{bundle.ViewRegDocTitle_dataDoc}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewRegDocLabel_numDoc}"/>
+                        <h:outputText value="#{regDocController.selected.numDoc}" title="#{bundle.ViewRegDocTitle_numDoc}"/>
+                        <h:outputText value="#{bundle.ViewRegDocLabel_rifDoc}"/>
+                        <h:outputText value="#{regDocController.selected.rifDoc}" title="#{bundle.ViewRegDocTitle_rifDoc}"/>
+                        <h:outputText value="#{bundle.ViewRegDocLabel_azzeraDoc}"/>
+                        <h:outputText value="#{regDocController.selected.azzeraDoc}" title="#{bundle.ViewRegDocTitle_azzeraDoc}"/>
+                        <h:outputText value="#{bundle.ViewRegDocLabel_monetaDoc}"/>
+                        <h:outputText value="#{regDocController.selected.monetaDoc}" title="#{bundle.ViewRegDocTitle_monetaDoc}"/>
+                        <h:outputText value="#{bundle.ViewRegDocLabel_cambioDoc}"/>
+                        <h:outputText value="#{regDocController.selected.cambioDoc}" title="#{bundle.ViewRegDocTitle_cambioDoc}"/>
+                        <h:outputText value="#{bundle.ViewRegDocLabel_monetaContabileDoc}"/>
+                        <h:outputText value="#{regDocController.selected.monetaContabileDoc}" title="#{bundle.ViewRegDocTitle_monetaContabileDoc}"/>
+                        <h:outputText value="#{bundle.ViewRegDocLabel_pagatoDoc}"/>
+                        <h:outputText value="#{regDocController.selected.pagatoDoc}" title="#{bundle.ViewRegDocTitle_pagatoDoc}"/>
+                        <h:outputText value="#{bundle.ViewRegDocLabel_mezzoDiPagDoc}"/>
+                        <h:outputText value="#{regDocController.selected.mezzoDiPagDoc}" title="#{bundle.ViewRegDocTitle_mezzoDiPagDoc}"/>
+                        <h:outputText value="#{bundle.ViewRegDocLabel_ggTraScadDoc}"/>
+                        <h:outputText value="#{regDocController.selected.ggTraScadDoc}" title="#{bundle.ViewRegDocTitle_ggTraScadDoc}"/>
+                        <h:outputText value="#{bundle.ViewRegDocLabel_dataScadDoc}"/>
+                        <h:outputText value="#{regDocController.selected.dataScadDoc}" title="#{bundle.ViewRegDocTitle_dataScadDoc}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewRegDocLabel_regDocId}"/>
+                        <h:outputText value="#{regDocController.selected.regDocId}" title="#{bundle.ViewRegDocTitle_regDocId}"/>
+                        <h:outputText value="#{bundle.ViewRegDocLabel_reg03Rigo}"/>
+                        <h:outputText value="#{regDocController.selected.reg03Rigo}" title="#{bundle.ViewRegDocTitle_reg03Rigo}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="RegDocViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

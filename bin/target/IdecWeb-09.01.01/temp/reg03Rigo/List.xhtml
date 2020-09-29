@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListReg03RigoTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="Reg03RigoListForm">
+                <p:panel header="#{bundle.ListReg03RigoTitle}">
+                    <p:dataTable id="datalist" value="#{reg03RigoController.items}" var="item"
+                                 selectionMode="single" selection="#{reg03RigoController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.reg03RigoPK}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReg03RigoTitle_reg03RigoPK_reg03NumRegId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.reg03RigoPK.reg03NumRegId}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReg03RigoTitle_reg03RigoPK_reg03SubrigoRegId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.reg03RigoPK.reg03SubrigoRegId}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReg03RigoTitle_reg03RigoPK_reg03RigoRegId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.reg03RigoPK.reg03RigoRegId}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReg03RigoTitle_conto}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.conto}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReg03RigoTitle_funzConto}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.funzConto}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReg03RigoTitle_vendor}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.vendor}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReg03RigoTitle_subconto}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.subconto}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReg03RigoTitle_dare}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dare}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReg03RigoTitle_avere}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.avere}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReg03RigoTitle_importoConto}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.importoConto}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReg03RigoTitle_opIva}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.opIva}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReg03RigoTitle_funIva}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.funIva}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReg03RigoTitle_percIva}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.percIva}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReg03RigoTitle_percDetIva}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.percDetIva}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReg03RigoTitle_ripPerc}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ripPerc}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReg03RigoTitle_ivaDetraibile}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ivaDetraibile}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReg03RigoTitle_nonDetraibile}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nonDetraibile}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReg03RigoTitle_funzImmobProdotto}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.funzImmobProdotto}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReg03RigoTitle_codAtt}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codAtt}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReg03RigoTitle_percInerente}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.percInerente}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReg03RigoTitle_percIiDeducibile}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.percIiDeducibile}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReg03RigoTitle_percIrapDeducibile}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.percIrapDeducibile}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReg03RigoTitle_rateo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.rateo}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReg03RigoTitle_accertamento}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.accertamento}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReg03RigoTitle_FV}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.FV}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReg03RigoTitle_localita}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.localita}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReg03RigoTitle_centroCosto}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.centroCosto}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReg03RigoTitle_pagatoDoc}"/>
+                            </f:facet>
+                            <p:selectBooleanCheckbox value="#{item.pagatoDoc}" disabled="true"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReg03RigoTitle_ivaNatura}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ivaNatura}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReg03RigoTitle_percIvaDeducibile}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.percIvaDeducibile}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReg03RigoTitle_reg01NumRegId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.reg01NumRegId}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{reg03RigoController.prepareCreate}" update=":Reg03RigoCreateForm" oncomplete="PF('Reg03RigoCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":Reg03RigoViewForm" oncomplete="PF('Reg03RigoViewDialog').show()" disabled="#{empty reg03RigoController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":Reg03RigoEditForm" oncomplete="PF('Reg03RigoEditDialog').show()" disabled="#{empty reg03RigoController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{reg03RigoController.destroy}" update=":growl,datalist" disabled="#{empty reg03RigoController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

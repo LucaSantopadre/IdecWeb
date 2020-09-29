@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns="http://www.w3.org/1999/xhtml">
+
+    <h:form>
+        <div id="tab">
+            <p:dataTable scrollable="true" scrollHeight="200" style="width:900px" id="tabDitte" var="ditta" value="#{gestioneDitteAmminController.listaDitte}" editable="true" editMode="row">
+
+                <p:ajax event="rowEdit" listener="#{gestioneDitteAmminController.onRowEdit}"/>
+                <p:column style="width:32px">
+                    <p:rowEditor  editTitle="Modifica" saveTitle="Salva" cancelTitle="Annulla"/>
+                </p:column>
+
+                <p:column headerText="Id" style="width:32px">
+                    <h:outputText value="#{ditta.id}" />
+                </p:column>
+
+                <p:column headerText="Ident. ditta" style="width:32px">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.codiceDitta}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.codiceDitta}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+                
+                <p:column headerText="Id iva" style="width:32px">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.idPaeseIva}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.idPaeseIva}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+                
+                <p:column headerText="Id codice iva">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.idCodiceIva}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.idCodiceIva}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+                
+                <p:column headerText="Codice fiscale">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.codiceFiscale}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.codiceFiscale}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+                
+                <p:column headerText="Denominazione">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.denominazione}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.denominazione}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+                
+                <p:column headerText="Cognome">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.cognome}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.cognome}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+                
+                <p:column headerText="Nome">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.nome}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.nome}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+            </p:dataTable>
+        </div>
+        <br/>
+
+
+        <h3>Crea una nuova ditta</h3>
+        <div id="form">
+            <h:panelGrid columns="4"> 
+                <p:outputLabel value="Identificativo ditta:"/>
+                <h:inputText value="#{gestioneDitteAmminController.codiceDittaForm}" required="true" requiredMessage="Codice ditta obbligatorio"/>
+
+                <p:outputLabel value="Id paese iva:"/>
+                <h:inputText value="#{gestioneDitteAmminController.idPaeseIvaForm}"/>
+
+                <p:outputLabel value="Id codice iva:"/>
+                <h:inputText value="#{gestioneDitteAmminController.idCodiceIvaForm}"/>
+                
+                <p:outputLabel value="Codice fiscale:"/>
+                <h:inputText value="#{gestioneDitteAmminController.codiceFiscaleForm}"/>
+                
+                <p:outputLabel value="Denominazione:"/>
+                <h:inputText value="#{gestioneDitteAmminController.denominazioneForm}"/>
+                
+                <p:outputLabel value="Cognome:"/>
+                <h:inputText value="#{gestioneDitteAmminController.cognomeForm}"/>
+                
+                <p:outputLabel value="Nome:"/>
+                <h:inputText value="#{gestioneDitteAmminController.nomeForm}"/>
+            
+            
+            </h:panelGrid>
+
+            <h:commandButton  id="btnRegistra" action="#{gestioneDitteAmminController.creaDitta()}" value="Registra">
+            </h:commandButton>
+            <p:messages/>
+        </div>
+    </h:form>
+</ui:composition>

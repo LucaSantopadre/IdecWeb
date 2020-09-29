@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="Reg03RigoViewDlg" widgetVar="Reg03RigoViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewReg03RigoTitle}">
+            <h:form id="Reg03RigoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{reg03RigoController.selected != null}">
+                        <h:outputText value="#{bundle.ViewReg03RigoLabel_reg03RigoPK_reg03NumRegId}"/>
+                        <h:outputText value="#{reg03RigoController.selected.reg03RigoPK.reg03NumRegId}" title="#{bundle.ViewReg03RigoTitle_reg03RigoPK_reg03NumRegId}"/>
+                        <h:outputText value="#{bundle.ViewReg03RigoLabel_reg03RigoPK_reg03RigoRegId}"/>
+                        <h:outputText value="#{reg03RigoController.selected.reg03RigoPK.reg03RigoRegId}" title="#{bundle.ViewReg03RigoTitle_reg03RigoPK_reg03RigoRegId}"/>
+                        <h:outputText value="#{bundle.ViewReg03RigoLabel_reg03RigoPK_reg03SubrigoRegId}"/>
+                        <h:outputText value="#{reg03RigoController.selected.reg03RigoPK.reg03SubrigoRegId}" title="#{bundle.ViewReg03RigoTitle_reg03RigoPK_reg03SubrigoRegId}"/>
+                        <h:outputText value="#{bundle.ViewReg03RigoLabel_conto}"/>
+                        <h:outputText value="#{reg03RigoController.selected.conto}" title="#{bundle.ViewReg03RigoTitle_conto}"/>
+                        <h:outputText value="#{bundle.ViewReg03RigoLabel_funzConto}"/>
+                        <h:outputText value="#{reg03RigoController.selected.funzConto}" title="#{bundle.ViewReg03RigoTitle_funzConto}"/>
+                        <h:outputText value="#{bundle.ViewReg03RigoLabel_vendor}"/>
+                        <h:outputText value="#{reg03RigoController.selected.vendor}" title="#{bundle.ViewReg03RigoTitle_vendor}"/>
+                        <h:outputText value="#{bundle.ViewReg03RigoLabel_subconto}"/>
+                        <h:outputText value="#{reg03RigoController.selected.subconto}" title="#{bundle.ViewReg03RigoTitle_subconto}"/>
+                        <h:outputText value="#{bundle.ViewReg03RigoLabel_dare}"/>
+                        <h:outputText value="#{reg03RigoController.selected.dare}" title="#{bundle.ViewReg03RigoTitle_dare}"/>
+                        <h:outputText value="#{bundle.ViewReg03RigoLabel_avere}"/>
+                        <h:outputText value="#{reg03RigoController.selected.avere}" title="#{bundle.ViewReg03RigoTitle_avere}"/>
+                        <h:outputText value="#{bundle.ViewReg03RigoLabel_importoConto}"/>
+                        <h:outputText value="#{reg03RigoController.selected.importoConto}" title="#{bundle.ViewReg03RigoTitle_importoConto}"/>
+                        <h:outputText value="#{bundle.ViewReg03RigoLabel_opIva}"/>
+                        <h:outputText value="#{reg03RigoController.selected.opIva}" title="#{bundle.ViewReg03RigoTitle_opIva}"/>
+                        <h:outputText value="#{bundle.ViewReg03RigoLabel_funIva}"/>
+                        <h:outputText value="#{reg03RigoController.selected.funIva}" title="#{bundle.ViewReg03RigoTitle_funIva}"/>
+                        <h:outputText value="#{bundle.ViewReg03RigoLabel_percIva}"/>
+                        <h:outputText value="#{reg03RigoController.selected.percIva}" title="#{bundle.ViewReg03RigoTitle_percIva}"/>
+                        <h:outputText value="#{bundle.ViewReg03RigoLabel_percDetIva}"/>
+                        <h:outputText value="#{reg03RigoController.selected.percDetIva}" title="#{bundle.ViewReg03RigoTitle_percDetIva}"/>
+                        <h:outputText value="#{bundle.ViewReg03RigoLabel_ripPerc}"/>
+                        <h:outputText value="#{reg03RigoController.selected.ripPerc}" title="#{bundle.ViewReg03RigoTitle_ripPerc}"/>
+                        <h:outputText value="#{bundle.ViewReg03RigoLabel_ivaDetraibile}"/>
+                        <h:outputText value="#{reg03RigoController.selected.ivaDetraibile}" title="#{bundle.ViewReg03RigoTitle_ivaDetraibile}"/>
+                        <h:outputText value="#{bundle.ViewReg03RigoLabel_nonDetraibile}"/>
+                        <h:outputText value="#{reg03RigoController.selected.nonDetraibile}" title="#{bundle.ViewReg03RigoTitle_nonDetraibile}"/>
+                        <h:outputText value="#{bundle.ViewReg03RigoLabel_funzImmobProdotto}"/>
+                        <h:outputText value="#{reg03RigoController.selected.funzImmobProdotto}" title="#{bundle.ViewReg03RigoTitle_funzImmobProdotto}"/>
+                        <h:outputText value="#{bundle.ViewReg03RigoLabel_codAtt}"/>
+                        <h:outputText value="#{reg03RigoController.selected.codAtt}" title="#{bundle.ViewReg03RigoTitle_codAtt}"/>
+                        <h:outputText value="#{bundle.ViewReg03RigoLabel_percInerente}"/>
+                        <h:outputText value="#{reg03RigoController.selected.percInerente}" title="#{bundle.ViewReg03RigoTitle_percInerente}"/>
+                        <h:outputText value="#{bundle.ViewReg03RigoLabel_percIiDeducibile}"/>
+                        <h:outputText value="#{reg03RigoController.selected.percIiDeducibile}" title="#{bundle.ViewReg03RigoTitle_percIiDeducibile}"/>
+                        <h:outputText value="#{bundle.ViewReg03RigoLabel_percIrapDeducibile}"/>
+                        <h:outputText value="#{reg03RigoController.selected.percIrapDeducibile}" title="#{bundle.ViewReg03RigoTitle_percIrapDeducibile}"/>
+                        <h:outputText value="#{bundle.ViewReg03RigoLabel_rateo}"/>
+                        <h:outputText value="#{reg03RigoController.selected.rateo}" title="#{bundle.ViewReg03RigoTitle_rateo}"/>
+                        <h:outputText value="#{bundle.ViewReg03RigoLabel_accertamento}"/>
+                        <h:outputText value="#{reg03RigoController.selected.accertamento}" title="#{bundle.ViewReg03RigoTitle_accertamento}"/>
+                        <h:outputText value="#{bundle.ViewReg03RigoLabel_FV}"/>
+                        <h:outputText value="#{reg03RigoController.selected.FV}" title="#{bundle.ViewReg03RigoTitle_FV}"/>
+                        <h:outputText value="#{bundle.ViewReg03RigoLabel_localita}"/>
+                        <h:outputText value="#{reg03RigoController.selected.localita}" title="#{bundle.ViewReg03RigoTitle_localita}"/>
+                        <h:outputText value="#{bundle.ViewReg03RigoLabel_centroCosto}"/>
+                        <h:outputText value="#{reg03RigoController.selected.centroCosto}" title="#{bundle.ViewReg03RigoTitle_centroCosto}"/>
+                        <h:outputText value="#{bundle.ViewReg03RigoLabel_pagatoDoc}"/>
+                        <p:selectBooleanCheckbox value="#{reg03RigoController.selected.pagatoDoc}" disabled="true"/>
+                        <h:outputText value="#{bundle.ViewReg03RigoLabel_ivaNatura}"/>
+                        <h:outputText value="#{reg03RigoController.selected.ivaNatura}" title="#{bundle.ViewReg03RigoTitle_ivaNatura}"/>
+                        <h:outputText value="#{bundle.ViewReg03RigoLabel_percIvaDeducibile}"/>
+                        <h:outputText value="#{reg03RigoController.selected.percIvaDeducibile}" title="#{bundle.ViewReg03RigoTitle_percIvaDeducibile}"/>
+                        <h:outputText value="#{bundle.ViewReg03RigoLabel_reg01NumRegId}"/>
+                        <h:outputText value="#{reg03RigoController.selected.reg01NumRegId}" title="#{bundle.ViewReg03RigoTitle_reg01NumRegId}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="Reg03RigoViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

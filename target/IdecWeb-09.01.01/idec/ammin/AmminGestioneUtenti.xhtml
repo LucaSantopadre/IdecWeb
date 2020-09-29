@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns="http://www.w3.org/1999/xhtml">
+
+    <h:form>
+        <h3>Lista utenti</h3>
+        <div id="tab">
+            <p:dataTable scrollable="true" scrollHeight="200" id="tabUtenti" var="utente" value="#{gestioneUtentiAmminController.listaUtenti}" editable="true" editMode="row">
+
+                <p:ajax event="rowEdit" listener="#{gestioneUtentiAmminController.onRowEdit}"/>
+                <p:column style="width:32px">
+                    <p:rowEditor  editTitle="Modifica" saveTitle="Salva" cancelTitle="Annulla"/>
+                </p:column>
+
+                <p:column headerText="Id" style="width:32px">
+                    <h:outputText value="#{utente.id}" />
+                </p:column>
+
+                <p:column headerText="Email utente">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{utente.email}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{utente.email}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Ditte visibili">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{utente.ditteVisibili}" /></f:facet>
+                        <f:facet name="input">
+                            <p:selectManyMenu  value="#{gestioneUtentiAmminController.codiciDitte}" style="width:100%">
+                                <f:selectItems value="#{gestioneUtentiAmminController.codiciDitte}" var="ditte" itemLabel="#{ditte}" itemValue="#{ditte}" />
+                            </p:selectManyMenu>
+                        </f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+            </p:dataTable>
+        </div>
+        <br/><br/>
+
+
+        <h3>Crea nuovo utente</h3>
+        <div id="form">
+            <h:panelGrid columns="4"> 
+                <p:outputLabel value="Email utente:"/>
+                <h:inputText value="#{gestioneUtentiAmminController.email}" required="true" requiredMessage="Email utente obbligatoria"/>
+
+                <p:outputLabel value="Password :"/>
+                <h:inputSecret redisplay="false" value="#{gestioneUtentiAmminController.password}"  required="true" requiredMessage="Password utente obbligatoria"/>
+            </h:panelGrid>
+
+            <h:commandButton  id="btnRegistra" action="#{gestioneUtentiAmminController.creaUtente()}" value="Registra">
+            </h:commandButton>
+            <p:messages/>
+        </div>
+    </h:form>
+</ui:composition>

@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../../template/TemplateAlbero.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns="http://www.w3.org/1999/xhtml">
+
+
+    <ui:define name="top">
+        <p:outputLabel value="Utente : #{session.getAttribute('username')}  - "/>
+        <p:outputLabel value="#{session.getAttribute('tipoUtente')}"/>
+    </ui:define>
+
+    <ui:define name="left">
+        <h:form>
+            <p:tree id="treeAmmin" value="#{alberoAmminMenuController.root}" selection="#{alberoAmminMenuController.selectNode}" selectionMode="single" var="node" style="width:240px; height: 500px">
+                <p:treeNode>
+                    <h:outputLabel value="#{node}"/>
+                </p:treeNode>
+                <p:ajax event="select" listener="#{alberoAmminMenuController.onNodeSelect}" update="contentPanel" />
+            </p:tree>
+            <h:commandButton id="btnOp" action="#{alberoAmminMenuController.btnEntraOperazione()}" value="Entra nell' operazione"/>
+            <p:messages></p:messages>
+        </h:form>
+        
+    </ui:define>
+
+
+    <ui:define name="content">
+        <p:outputPanel id="contentPanel">          
+            <h:panelGroup rendered="#{alberoAmminMenuController.selectNodeToString=='Gestione utenti'}">
+                <ui:include  src="/idec/ammin/AmminGestioneUtenti.xhtml"  />
+            </h:panelGroup>
+
+            <h:panelGroup rendered="#{alberoAmminMenuController.selectNodeToString=='Gestione ditte'}">
+                <ui:include  src="/idec/ammin/AmminGestioneDitte.xhtml"  />
+            </h:panelGroup>
+
+            <h:panelGroup rendered="#{alberoAmminMenuController.selectNodeToStringPadre=='Gestione utenti'}">
+                <ui:include  src="/idec/ammin/AmminGestioneSingoloUtente.xhtml"  />
+            </h:panelGroup>
+
+            <h:panelGroup rendered="#{alberoAmminMenuController.selectNodeToString=='Crea ditta'}">
+                <ui:include  src="/idec/ammin/AmminCreaDitta.xhtml"  />
+            </h:panelGroup>
+
+        </p:outputPanel>
+    </ui:define>
+
+</ui:composition>

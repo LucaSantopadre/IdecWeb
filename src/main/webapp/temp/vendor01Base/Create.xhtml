@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="Vendor01BaseCreateDlg" widgetVar="Vendor01BaseCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateVendor01BaseTitle}">
+            <h:form id="Vendor01BaseCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{vendor01BaseController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateVendor01BaseLabel_vendor01Id}" for="vendor01Id" />
+                        <p:inputText id="vendor01Id" value="#{vendor01BaseController.selected.vendor01Id}" title="#{bundle.CreateVendor01BaseTitle_vendor01Id}" required="true" requiredMessage="#{bundle.CreateVendor01BaseRequiredMessage_vendor01Id}"/>
+                        <p:outputLabel value="#{bundle.CreateVendor01BaseLabel_vendor01Conto}" for="vendor01Conto" />
+                        <p:inputText id="vendor01Conto" value="#{vendor01BaseController.selected.vendor01Conto}" title="#{bundle.CreateVendor01BaseTitle_vendor01Conto}" />
+                        <p:outputLabel value="#{bundle.CreateVendor01BaseLabel_vendor01Codice}" for="vendor01Codice" />
+                        <p:inputText id="vendor01Codice" value="#{vendor01BaseController.selected.vendor01Codice}" title="#{bundle.CreateVendor01BaseTitle_vendor01Codice}" />
+                        <p:outputLabel value="#{bundle.CreateVendor01BaseLabel_vendor01Denominazione}" for="vendor01Denominazione" />
+                        <p:inputText id="vendor01Denominazione" value="#{vendor01BaseController.selected.vendor01Denominazione}" title="#{bundle.CreateVendor01BaseTitle_vendor01Denominazione}" />
+                        <p:outputLabel value="#{bundle.CreateVendor01BaseLabel_vendor01Cognome}" for="vendor01Cognome" />
+                        <p:inputText id="vendor01Cognome" value="#{vendor01BaseController.selected.vendor01Cognome}" title="#{bundle.CreateVendor01BaseTitle_vendor01Cognome}" />
+                        <p:outputLabel value="#{bundle.CreateVendor01BaseLabel_vendor01Nome}" for="vendor01Nome" />
+                        <p:inputText id="vendor01Nome" value="#{vendor01BaseController.selected.vendor01Nome}" title="#{bundle.CreateVendor01BaseTitle_vendor01Nome}" />
+                        <p:outputLabel value="#{bundle.CreateVendor01BaseLabel_vendor01PartIva}" for="vendor01PartIva" />
+                        <p:inputText id="vendor01PartIva" value="#{vendor01BaseController.selected.vendor01PartIva}" title="#{bundle.CreateVendor01BaseTitle_vendor01PartIva}" />
+                        <p:outputLabel value="#{bundle.CreateVendor01BaseLabel_vendor01CodFisc}" for="vendor01CodFisc" />
+                        <p:inputText id="vendor01CodFisc" value="#{vendor01BaseController.selected.vendor01CodFisc}" title="#{bundle.CreateVendor01BaseTitle_vendor01CodFisc}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{vendor01BaseController.create}" value="#{bundle.Save}" update="display,:Vendor01BaseListForm:datalist,:growl" oncomplete="handleSubmit(args,'Vendor01BaseCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="Vendor01BaseCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

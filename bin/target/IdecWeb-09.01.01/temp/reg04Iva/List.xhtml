@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListReg04IvaTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="Reg04IvaListForm">
+                <p:panel header="#{bundle.ListReg04IvaTitle}">
+                    <p:dataTable id="datalist" value="#{reg04IvaController.items}" var="item"
+                                 selectionMode="single" selection="#{reg04IvaController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.reg04IvaId}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReg04IvaTitle_ivaOp}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ivaOp}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReg04IvaTitle_ivaFun}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ivaFun}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReg04IvaTitle_ivaPerc}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ivaPerc}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReg04IvaTitle_ivaPercDet}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ivaPercDet}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReg04IvaTitle_ivaRipartoAcq}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ivaRipartoAcq}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReg04IvaTitle_ivaImposta}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ivaImposta}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReg04IvaTitle_ivaImportoNonDet}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ivaImportoNonDet}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReg04IvaTitle_ivaNatura}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ivaNatura}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReg04IvaTitle_ivaPercDed}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ivaPercDed}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReg04IvaTitle_ivaImportoDed}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ivaImportoDed}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReg04IvaTitle_ivaPercNonDet}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ivaPercNonDet}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReg04IvaTitle_ivaImportoDet}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ivaImportoDet}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReg04IvaTitle_reg04IvaId}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.reg04IvaId}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListReg04IvaTitle_reg03Rigo}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.reg03Rigo}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{reg04IvaController.prepareCreate}" update=":Reg04IvaCreateForm" oncomplete="PF('Reg04IvaCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":Reg04IvaViewForm" oncomplete="PF('Reg04IvaViewDialog').show()" disabled="#{empty reg04IvaController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":Reg04IvaEditForm" oncomplete="PF('Reg04IvaEditDialog').show()" disabled="#{empty reg04IvaController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{reg04IvaController.destroy}" update=":growl,datalist" disabled="#{empty reg04IvaController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="Reg01CreateDlg" widgetVar="Reg01CreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateReg01Title}">
+            <h:form id="Reg01CreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{reg01Controller.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateReg01Label_numRegId}" for="numRegId" />
+                        <p:inputText id="numRegId" value="#{reg01Controller.selected.numRegId}" title="#{bundle.CreateReg01Title_numRegId}" required="true" requiredMessage="#{bundle.CreateReg01RequiredMessage_numRegId}"/>
+                        <p:outputLabel value="#{bundle.CreateReg01Label_dataReg}" for="dataReg" />
+                        <p:calendar id="dataReg" pattern="MM/dd/yyyy" value="#{reg01Controller.selected.dataReg}" title="#{bundle.EditReg01Title_dataReg}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateReg01Label_reparto}" for="reparto" />
+                        <p:inputText id="reparto" value="#{reg01Controller.selected.reparto}" title="#{bundle.CreateReg01Title_reparto}" />
+                        <p:outputLabel value="#{bundle.CreateReg01Label_libro}" for="libro" />
+                        <p:inputText id="libro" value="#{reg01Controller.selected.libro}" title="#{bundle.CreateReg01Title_libro}" />
+                        <p:outputLabel value="#{bundle.CreateReg01Label_protocolloLibro}" for="protocolloLibro" />
+                        <p:inputText id="protocolloLibro" value="#{reg01Controller.selected.protocolloLibro}" title="#{bundle.CreateReg01Title_protocolloLibro}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{reg01Controller.create}" value="#{bundle.Save}" update="display,:Reg01ListForm:datalist,:growl" oncomplete="handleSubmit(args,'Reg01CreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="Reg01CreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

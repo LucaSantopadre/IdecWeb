@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="M2CreateDlg" widgetVar="M2CreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateM2Title}">
+            <h:form id="M2CreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{m2Controller.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateM2Label_m2Id}" for="m2Id" />
+                        <p:inputText id="m2Id" value="#{m2Controller.selected.m2Id}" title="#{bundle.CreateM2Title_m2Id}" required="true" requiredMessage="#{bundle.CreateM2RequiredMessage_m2Id}"/>
+                        <p:outputLabel value="#{bundle.CreateM2Label_ceeMasCodIdex}" for="ceeMasCodIdex" />
+                        <p:inputText id="ceeMasCodIdex" value="#{m2Controller.selected.ceeMasCodIdex}" title="#{bundle.CreateM2Title_ceeMasCodIdex}" required="true" requiredMessage="#{bundle.CreateM2RequiredMessage_ceeMasCodIdex}"/>
+                        <p:outputLabel value="#{bundle.CreateM2Label_ceeMasCodDes}" for="ceeMasCodDes" />
+                        <p:inputText id="ceeMasCodDes" value="#{m2Controller.selected.ceeMasCodDes}" title="#{bundle.CreateM2Title_ceeMasCodDes}" />
+                        <p:outputLabel value="#{bundle.CreateM2Label_cee}" for="cee" />
+                        <p:inputText id="cee" value="#{m2Controller.selected.cee}" title="#{bundle.CreateM2Title_cee}" />
+                        <p:outputLabel value="#{bundle.CreateM2Label_privato}" for="privato" />
+                        <p:inputText id="privato" value="#{m2Controller.selected.privato}" title="#{bundle.CreateM2Title_privato}" required="true" requiredMessage="#{bundle.CreateM2RequiredMessage_privato}"/>
+                        <p:outputLabel value="#{bundle.CreateM2Label_chkEntroAnno}" for="chkEntroAnno" />
+                        <p:inputText id="chkEntroAnno" value="#{m2Controller.selected.chkEntroAnno}" title="#{bundle.CreateM2Title_chkEntroAnno}" required="true" requiredMessage="#{bundle.CreateM2RequiredMessage_chkEntroAnno}"/>
+                        <p:outputLabel value="#{bundle.CreateM2Label_chkOltreAnno}" for="chkOltreAnno" />
+                        <p:inputText id="chkOltreAnno" value="#{m2Controller.selected.chkOltreAnno}" title="#{bundle.CreateM2Title_chkOltreAnno}" required="true" requiredMessage="#{bundle.CreateM2RequiredMessage_chkOltreAnno}"/>
+                        <p:outputLabel value="#{bundle.CreateM2Label_chkEntro5Anni}" for="chkEntro5Anni" />
+                        <p:inputText id="chkEntro5Anni" value="#{m2Controller.selected.chkEntro5Anni}" title="#{bundle.CreateM2Title_chkEntro5Anni}" required="true" requiredMessage="#{bundle.CreateM2RequiredMessage_chkEntro5Anni}"/>
+                        <p:outputLabel value="#{bundle.CreateM2Label_chkOltre5Anni}" for="chkOltre5Anni" />
+                        <p:inputText id="chkOltre5Anni" value="#{m2Controller.selected.chkOltre5Anni}" title="#{bundle.CreateM2Title_chkOltre5Anni}" required="true" requiredMessage="#{bundle.CreateM2RequiredMessage_chkOltre5Anni}"/>
+                        <p:outputLabel value="#{bundle.CreateM2Label_dallaDataAdmin}" for="dallaDataAdmin" />
+                        <p:calendar id="dallaDataAdmin" pattern="MM/dd/yyyy" value="#{m2Controller.selected.dallaDataAdmin}" title="#{bundle.EditM2Title_dallaDataAdmin}" required="true" requiredMessage="#{bundle.EditM2RequiredMessage_dallaDataAdmin}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateM2Label_allaDataAdmin}" for="allaDataAdmin" />
+                        <p:calendar id="allaDataAdmin" pattern="MM/dd/yyyy" value="#{m2Controller.selected.allaDataAdmin}" title="#{bundle.EditM2Title_allaDataAdmin}" required="true" requiredMessage="#{bundle.EditM2RequiredMessage_allaDataAdmin}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateM2Label_admin}" for="admin" />
+                        <p:inputText id="admin" value="#{m2Controller.selected.admin}" title="#{bundle.CreateM2Title_admin}" required="true" requiredMessage="#{bundle.CreateM2RequiredMessage_admin}"/>
+                        <p:outputLabel value="#{bundle.CreateM2Label_cgtipomascodID}" for="cgtipomascodID" />
+                        <p:selectOneMenu id="cgtipomascodID" value="#{m2Controller.selected.cgtipomascodID}" required="true" requiredMessage="#{bundle.EditM2RequiredMessage_cgtipomascodID}">
+                            <f:selectItems value="#{m1Controller.itemsAvailableSelectOne}"
+                                           var="cgtipomascodIDItem"
+                                           itemValue="#{cgtipomascodIDItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{m2Controller.create}" value="#{bundle.Save}" update="display,:M2ListForm:datalist,:growl" oncomplete="handleSubmit(args,'M2CreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="M2CreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

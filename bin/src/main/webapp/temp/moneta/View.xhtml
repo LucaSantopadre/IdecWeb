@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MonetaViewDlg" widgetVar="MonetaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewMonetaTitle}">
+            <h:form id="MonetaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{monetaController.selected != null}">
+                        <h:outputText value="#{bundle.ViewMonetaLabel_divCod}"/>
+                        <h:outputText value="#{monetaController.selected.divCod}" title="#{bundle.ViewMonetaTitle_divCod}"/>
+                        <h:outputText value="#{bundle.ViewMonetaLabel_divDes}"/>
+                        <h:outputText value="#{monetaController.selected.divDes}" title="#{bundle.ViewMonetaTitle_divDes}"/>
+                        <h:outputText value="#{bundle.ViewMonetaLabel_codMoneta}"/>
+                        <h:outputText value="#{monetaController.selected.codMoneta}" title="#{bundle.ViewMonetaTitle_codMoneta}"/>
+                        <h:outputText value="#{bundle.ViewMonetaLabel_codStato}"/>
+                        <h:outputText value="#{monetaController.selected.codStato}" title="#{bundle.ViewMonetaTitle_codStato}"/>
+                        <h:outputText value="#{bundle.ViewMonetaLabel_siglaStato}"/>
+                        <h:outputText value="#{monetaController.selected.siglaStato}" title="#{bundle.ViewMonetaTitle_siglaStato}"/>
+                        <h:outputText value="#{bundle.ViewMonetaLabel_desStato}"/>
+                        <h:outputText value="#{monetaController.selected.desStato}" title="#{bundle.ViewMonetaTitle_desStato}"/>
+                        <h:outputText value="#{bundle.ViewMonetaLabel_cambio}"/>
+                        <h:outputText value="#{monetaController.selected.cambio}" title="#{bundle.ViewMonetaTitle_cambio}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="MonetaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

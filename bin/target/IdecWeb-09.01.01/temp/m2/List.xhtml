@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListM2Title}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="M2ListForm">
+                <p:panel header="#{bundle.ListM2Title}">
+                    <p:dataTable id="datalist" value="#{m2Controller.items}" var="item"
+                                 selectionMode="single" selection="#{m2Controller.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.m2Id}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListM2Title_m2Id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.m2Id}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListM2Title_ceeMasCodIdex}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ceeMasCodIdex}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListM2Title_ceeMasCodDes}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ceeMasCodDes}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListM2Title_cee}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cee}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListM2Title_privato}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.privato}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListM2Title_chkEntroAnno}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.chkEntroAnno}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListM2Title_chkOltreAnno}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.chkOltreAnno}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListM2Title_chkEntro5Anni}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.chkEntro5Anni}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListM2Title_chkOltre5Anni}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.chkOltre5Anni}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListM2Title_dallaDataAdmin}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dallaDataAdmin}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListM2Title_allaDataAdmin}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.allaDataAdmin}">
+                                <f:convertDateTime pattern="MM/dd/yyyy" />
+                            </h:outputText>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListM2Title_admin}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.admin}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListM2Title_cgtipomascodID}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cgtipomascodID}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{m2Controller.prepareCreate}" update=":M2CreateForm" oncomplete="PF('M2CreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":M2ViewForm" oncomplete="PF('M2ViewDialog').show()" disabled="#{empty m2Controller.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":M2EditForm" oncomplete="PF('M2EditDialog').show()" disabled="#{empty m2Controller.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{m2Controller.destroy}" update=":growl,datalist" disabled="#{empty m2Controller.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

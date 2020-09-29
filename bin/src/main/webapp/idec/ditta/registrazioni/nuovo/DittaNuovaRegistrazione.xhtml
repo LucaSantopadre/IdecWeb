@@ -1,0 +1,561 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./../../../../template/TemplatePagina.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns="http://www.w3.org/1999/xhtml">
+
+    <ui:define name="top">
+        <p:outputLabel value="Utente : #{session.getAttribute('username')}  - "/>
+        <p:outputLabel value="#{session.getAttribute('tipoUtente')}  "/>
+        <p:outputLabel value="Ditta : #{session.getAttribute('descr_ditta')}" style="padding-left: 15px"/>
+    </ui:define>
+
+    <ui:define name="content">
+        <p:tabView>
+            <p:tab title="Fattura">
+                <h:form id="formFattura">
+                    <div id="tab">
+
+                        <p:dataTable id="tabDitta0"  scrollable="true" scrollHeight="25" style="width:550px"  var="reg" value="#{dittaNuovaRegistrazioneController.reg01Lista}" editable="true" editMode="cell">
+                            <p:column headerText="Num reg" style="width:40px;color: red">
+                                <h:outputText value="#{reg.numRegId}" />
+                            </p:column>
+
+                            <p:column  headerText="Data reg" style="width:35px">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText id="out0" value="#{reg.dataRegString}" /></f:facet>
+                                    <f:facet name="input">
+                                        <p:calendar tabindex="1" mask="true" value="#{reg.dataReg}">
+                                            <p:ajax update="out0" event="dateSelect" listener="#{dittaNuovaRegistrazioneController.aggiornaDataRegOutput()}"/>
+                                            <p:ajax update="out0" event="change" listener="#{dittaNuovaRegistrazioneController.aggiornaDataRegOutput()}"/>
+                                        </p:calendar>
+                                    </f:facet>
+                                </p:cellEditor>
+                            </p:column>
+
+                            <p:column headerText="Operazione" style="width:100px" >
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText id="out1" value="#{dittaNuovaRegistrazioneController.operazionePanel}" /></f:facet>
+                                    <f:facet name="input">
+                                        <h:selectOneMenu tabindex="2" style="width: 100%" value="#{dittaNuovaRegistrazioneController.operazionePanel}">
+                                            <f:selectItem itemValue="" itemLabel="" />
+                                            <f:selectItem itemLabel="Nuova" itemValue="Nuova" />
+                                            <f:selectItem itemLabel="Modifica" itemValue="Modifica" />
+                                            <p:ajax event="keyup" update="out1" />
+                                        </h:selectOneMenu>
+                                    </f:facet>
+                                </p:cellEditor>
+                            </p:column>
+
+                            <p:column headerText="Reparto" style="width:100px">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText id="out2" value="#{dittaNuovaRegistrazioneController.repartoPanel.repartoDescr}" /></f:facet>
+                                    <f:facet name="input">
+                                        <h:selectOneMenu tabindex="4" style="width: 100%" value="#{dittaNuovaRegistrazioneController.repartoPanel}">
+                                            <f:selectItem itemValue="" itemLabel="" />
+                                            <f:selectItems value="#{dittaNuovaRegistrazioneController.repartoLista}" var="rep" itemLabel="#{rep.repartoDescr}" itemValue="#{rep}"/>
+                                            <p:ajax update="out2 inp3 out3" listener="#{dittaNuovaRegistrazioneController.aggiornaLibroDaReparto}"/>
+                                        </h:selectOneMenu>
+                                    </f:facet>
+                                </p:cellEditor>
+                            </p:column>
+
+                            <p:column headerText="Libro" style="width:100px;color: green">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText id="out3" value="#{dittaNuovaRegistrazioneController.libroPanel.libroDescr}" /></f:facet>
+                                    <f:facet name="input">
+                                        <h:selectOneMenu tabindex="3" id="inp3" style="width: 100%" value="#{dittaNuovaRegistrazioneController.libroPanel}">
+                                            <f:selectItem itemValue="" itemLabel="" />
+                                            <f:selectItems value="#{dittaNuovaRegistrazioneController.libroLista}" var="lib" itemLabel="#{lib.libroDescr}" itemValue="#{lib}" />
+                                            <p:ajax update="out3" />
+                                        </h:selectOneMenu>
+                                    </f:facet>
+                                </p:cellEditor>
+                            </p:column>
+
+                            <p:column headerText="protocollo libro" style="color: red">
+                                <h:outputText value="#{reg.protocolloLibro}" />
+                            </p:column>
+                        </p:dataTable>
+                        <!-- FINE tabella 0 _____________________________________________-->
+
+
+
+                        <p:dataTable id="tabDitta2"  scrollable="true" scrollHeight="25" style="width:850px"  var="reg02" value="#{dittaNuovaRegistrazioneController.reg02DocLista}" editable="true" editMode="cell">
+                            <p:column headerText="Tipo doc." style="width:100px">
+                                <p:cellEditor>
+                                    <f:facet name="output"><p:outputLabel value="#{dittaNuovaRegistrazioneController.tipoDocPanel.codDocIvaDescr}" />
+                                    </f:facet>
+                                    <f:facet name="input">
+                                        <h:selectOneMenu style="width: 100%" value="#{dittaNuovaRegistrazioneController.tipoDocPanel}">
+                                            <f:selectItem itemValue="" itemLabel="" />
+                                            <f:selectItems value="#{dittaNuovaRegistrazioneController.tipoDocLista}" var="doc" itemLabel="#{doc.codDocIva}  #{doc.codDocIvaDescr}" itemValue="#{doc}"/>
+                                        </h:selectOneMenu>
+                                    </f:facet>
+                                </p:cellEditor>
+                            </p:column>
+
+                            <p:column  headerText="Data doc" style="width:35px">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText id="outDataDoc" value="#{reg02.dataDocString}" /></f:facet>
+                                    <f:facet name="input">
+                                        <p:calendar mask="true" value="#{reg02.dataDoc}">
+                                            <p:ajax update="outDataDoc" event="dateSelect" listener="#{dittaNuovaRegistrazioneController.aggiornaDataDocOutput()}"/>
+                                            <p:ajax update="outDataDoc" event="change" listener="#{dittaNuovaRegistrazioneController.aggiornaDataDocOutput()}"/>
+                                        </p:calendar>
+                                    </f:facet>
+                                </p:cellEditor>
+                            </p:column>
+
+                            <p:column headerText="Num doc." style="width:60px">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{reg02.numDoc}" /></f:facet>
+                                    <f:facet name="input"><p:inputText value="#{reg02.numDoc}" style="width: 100%"/></f:facet>
+                                </p:cellEditor>
+                            </p:column>
+
+                            <p:column headerText="Rif. doc." style="width:60px">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{reg02.rifDoc}" /></f:facet>
+                                    <f:facet name="input"><p:inputText value="#{reg02.rifDoc}" style="width: 100%"/></f:facet>
+                                </p:cellEditor>
+                            </p:column>
+
+                            <p:column headerText="Azzera" style="width:40px">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{reg02.azzeraDoc}" /></f:facet>
+                                    <f:facet name="input"><p:inputText value="#{reg02.azzeraDoc}" style="width: 100%"/></f:facet>
+                                </p:cellEditor>
+                            </p:column>
+
+                            <p:column headerText="Mon doc" style="width:15px">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{dittaNuovaRegistrazioneController.monetaPanel.divCod}" /></f:facet>
+                                    <f:facet name="input">
+                                        <h:selectOneMenu style="width: 100%" value="#{dittaNuovaRegistrazioneController.monetaPanel}">
+                                            <f:selectItem itemValue="" itemLabel="" />
+                                            <f:selectItems value="#{dittaNuovaRegistrazioneController.monetaLista}" var="mon" itemLabel="#{mon.divCod}  #{mon.divDes}" itemValue="#{mon}"/>
+                                        </h:selectOneMenu>
+                                    </f:facet>
+                                </p:cellEditor>
+                            </p:column>
+
+                            <p:column headerText="Cambio" style="width:60px">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="1,00000" /></f:facet>
+                                    <f:facet name="input"><p:inputText style="width: 100%"/></f:facet>
+                                </p:cellEditor>
+                            </p:column>
+
+                            <p:column headerText="Mon cont" style="width:15px">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{dittaNuovaRegistrazioneController.monetaContoPanel.divCod}" /></f:facet>
+                                    <f:facet name="input">
+                                        <h:selectOneMenu style="width: 100%" value="#{dittaNuovaRegistrazioneController.monetaContoPanel}">
+                                            <f:selectItem itemValue="" itemLabel="" />
+                                            <f:selectItems value="#{dittaNuovaRegistrazioneController.monetaLista}" var="moneConto" itemLabel="#{moneConto.divCod}  #{moneConto.divDes}" itemValue="#{moneConto}"/>
+                                        </h:selectOneMenu>
+                                    </f:facet>
+                                </p:cellEditor>
+                            </p:column>
+
+
+                            <p:column  headerText="Data scad doc" style="width:35px">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText id="outDataScadDoc" value="#{reg02.dataScadDocString}" /></f:facet>
+                                    <f:facet name="input">
+                                        <p:calendar mask="true" value="#{reg02.dataScadDoc}">
+                                            <p:ajax update="outDataDoc" event="dateSelect" listener="#{dittaNuovaRegistrazioneController.aggiornaDataScadDocOutput()}"/>
+                                            <p:ajax update="outDataDoc" event="change" listener="#{dittaNuovaRegistrazioneController.aggiornaDataScadDocOutput()}"/>
+                                        </p:calendar>
+                                    </f:facet>
+                                </p:cellEditor>
+                            </p:column>
+
+                            <p:column headerText="Mezzo di pagamento" style="width:100px">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="" /></f:facet>
+                                    <f:facet name="input"><h:selectOneMenu style="width: 100%"/></f:facet>
+                                </p:cellEditor>
+                            </p:column>
+
+                            <p:column headerText="gg tra scad">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="" /></f:facet>
+                                    <f:facet name="input"><p:inputText style="width: 100%"/></f:facet>
+                                </p:cellEditor>
+                            </p:column>
+
+                        </p:dataTable>
+                        <!-- FINE tabella 2 __________________________________________________________________________-->
+
+
+
+
+                        <p:dataTable id="tabReg03" scrollable="true" scrollHeight="205" style="width:100%" var="reg03Rigo" value="#{dittaReg03RigoController.reg03RigoLista}" editable="true" editMode="cell">
+                            <p:column headerText="eli na" style="width:10px">
+                                <p:commandLink value="X" style="width:100%"  />
+                            </p:column>
+
+                            <p:column headerText="rigo reg" style="width:10px; color: red">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{reg03Rigo.reg03RigoPK.reg03RigoRegId}" /></f:facet>
+                                    <f:facet name="input"><p:inputText value="#{reg03Rigo.reg03RigoPK.reg03RigoRegId}" style="width: 100%"/></f:facet>
+                                </p:cellEditor>
+                            </p:column>
+
+                            <p:column headerText="sub rig" style="width:10px; color: red">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{reg03Rigo.reg03RigoPK.reg03SubrigoRegId}" /></f:facet>
+                                    <f:facet name="input"><p:inputText value="#{reg03Rigo.reg03RigoPK.reg03SubrigoRegId}" style="width: 100%"/></f:facet>
+                                </p:cellEditor>
+                            </p:column>
+
+                            <p:column headerText="conto" style="width:75px">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{pro.codiceDitta}" /></f:facet>
+                                    <f:facet name="input"><h:selectOneMenu value="#{pro.codiceDitta}" style="width: 100%"/></f:facet>
+                                </p:cellEditor>
+                            </p:column>
+
+                            <p:column headerText="f conto" style="width:2px">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{pro.codiceDitta}" /></f:facet>
+                                    <f:facet name="input"><p:inputText value="#{pro.codiceDitta}" style="width: 100%"/></f:facet>
+                                </p:cellEditor>
+                            </p:column>
+
+                            <p:column headerText="1.vendor 2.sub" style="width:75px">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{pro.codiceDitta}" /></f:facet>
+                                    <f:facet name="input"><h:selectOneMenu value="#{pro.codiceDitta}" style="width: 100%"/></f:facet>
+                                </p:cellEditor>
+                            </p:column>
+
+                            <p:column headerText="impo(+)DARE entrata costo debitori" style="width:75px">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{reg03Rigo.dare}" style="width: 100%" /></f:facet>
+                                    <f:facet name="input">
+                                        <p:inputNumber value="#{reg03Rigo.dare}" decimalPlaces="2" style="width: 100%">
+                                            <p:ajax update="importoConto" listener="#{dittaReg03RigoController.aggiornaSommaDareAvere()}" />
+                                        </p:inputNumber>
+
+                                    </f:facet>
+                                </p:cellEditor>
+                            </p:column>
+
+                            <p:column headerText="impo(-)AVERE uscita ricavo creditori" style="width:75px">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{reg03Rigo.avere}" /></f:facet>
+                                    <f:facet name="input">
+                                        <p:inputNumber value="#{reg03Rigo.avere}" decimalPlaces="2" style="width: 100%">
+                                            <p:ajax update="importoConto" listener="#{dittaReg03RigoController.aggiornaSommaDareAvere()}" /> 
+                                        </p:inputNumber>
+                                    </f:facet>
+                                </p:cellEditor> 
+                            </p:column>
+
+                            <p:column headerText="impo DARE AVERE" style="width:75px;color: red">
+                                <p:outputLabel id="importoConto" value="#{reg03Rigo.importoConto}" /> 
+                            </p:column>
+
+                            <p:column headerText="iva natura" style="width:10px">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText id="natura_iva" value="#{reg03Rigo.ivaNatura}" /></f:facet>
+                                    <f:facet name="input">
+                                        <h:selectOneMenu style="width: 100%" value="#{dittaReg03RigoController.naturaIvaPanel}">
+                                            <f:selectItem itemValue="" itemLabel="" />
+                                            <f:selectItems value="#{dittaReg03RigoController.naturaIvaList}" var="natIva" itemLabel="#{natIva.codNaturaIva} #{natIva.naturaIvaDescr}" itemValue="#{natIva}"/>
+                                            <p:ajax update="natura_iva" listener="#{dittaReg03RigoController.aggiornaNaturaIvaPanel(reg03Rigo)}"/>
+                                        </h:selectOneMenu>
+                                    </f:facet>
+                                </p:cellEditor>
+                            </p:column>
+
+
+                            <p:column headerText="iva % Doc" style="width:20px">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{reg03Rigo.percIva}" /></f:facet>
+                                    <f:facet name="input">
+                                        <p:inputNumber value="#{reg03Rigo.percIva}" decimalPlaces="2" style="width: 100%">
+                                            <p:ajax update="tabReg03 " listener="#{dittaReg03RigoController.actionAggiungiSubRighiNatura_N6(reg03Rigo)}"/>
+                                        </p:inputNumber>
+                                    </f:facet>
+                                </p:cellEditor>
+                            </p:column>
+
+
+                            <p:column headerText="iva imposta" style="width:20px">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{pro.codiceDitta}" /></f:facet>
+                                    <f:facet name="input"><h:selectOneMenu value="#{pro.codiceDitta}" style="width: 100%"/></f:facet>
+                                </p:cellEditor>
+                            </p:column>
+
+                            <p:column headerText="iva % deT" style="width:20px">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{reg03Rigo.percDetIva}" /></f:facet>
+                                    <f:facet name="input">
+                                        <p:inputNumber value="#{reg03Rigo.percDetIva}" decimalPlaces="2" style="width: 100%">
+                                            <p:ajax update="tabReg03 " listener="#{dittaReg03RigoController.actionAggiungiSubRighiIva(reg03Rigo)}"/>
+                                        </p:inputNumber>
+                                    </f:facet>
+                                </p:cellEditor>
+                            </p:column>
+
+                            <p:column headerText="iva importo deT" style="width:20px">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{reg03Rigo.percDetIva}" /></f:facet>
+                                    <f:facet name="input">
+                                        <p:inputNumber value="#{reg03Rigo.percDetIva}" decimalPlaces="2" style="width: 100%">
+                                            <p:ajax update="tabReg03 " listener="#{dittaReg03RigoController.actionAggiungiSubRighiIva(reg03Rigo)}"/>
+                                        </p:inputNumber>
+                                    </f:facet>
+                                </p:cellEditor>
+                            </p:column>
+
+
+
+                            <p:column headerText="iva % NONdeT" style="width:20px">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{reg03Rigo.percDetIva}" /></f:facet>
+                                    <f:facet name="input">
+                                        <p:inputNumber value="#{reg03Rigo.percDetIva}" decimalPlaces="2" style="width: 100%">
+                                            <p:ajax update="tabReg03 " listener="#{dittaReg03RigoController.actionAggiungiSubRighiIva(reg03Rigo)}"/>
+                                        </p:inputNumber>
+                                    </f:facet>
+                                </p:cellEditor>
+                            </p:column>
+
+                            <p:column headerText="iva importo NONdeT" style="width:20px">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{reg03Rigo.percDetIva}" /></f:facet>
+                                    <f:facet name="input">
+                                        <p:inputNumber value="#{reg03Rigo.percDetIva}" decimalPlaces="2" style="width: 100%">
+                                            <p:ajax update="tabReg03 " listener="#{dittaReg03RigoController.actionAggiungiSubRighiIva(reg03Rigo)}"/>
+                                        </p:inputNumber>
+                                    </f:facet>
+                                </p:cellEditor>
+                            </p:column>
+
+
+                            <p:column headerText="iva % deD" style="width:20px">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{reg03Rigo.percIvaDeducibile}" /></f:facet>
+                                    <f:facet name="input">
+                                        <p:inputNumber value="#{reg03Rigo.percIvaDeducibile}" decimalPlaces="2" style="width: 100%">
+                                        </p:inputNumber>
+                                    </f:facet>
+                                </p:cellEditor>
+                            </p:column>
+
+
+                            <p:column headerText="iva importo deD" style="width:20px">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText value="#{reg03Rigo.percDetIva}" /></f:facet>
+                                    <f:facet name="input">
+                                        <p:inputNumber value="#{reg03Rigo.percDetIva}" decimalPlaces="2" style="width: 100%">
+                                            <p:ajax update="tabReg03 " listener="#{dittaReg03RigoController.actionAggiungiSubRighiIva(reg03Rigo)}"/>
+                                        </p:inputNumber>
+                                    </f:facet>
+                                </p:cellEditor>
+                            </p:column>
+
+
+
+
+
+                            <p:column headerText="iva fun" style="width:5px">
+                                <p:cellEditor>
+                                    <f:facet name="output"><h:outputText id="funz_iva" value="#{reg03Rigo.funIva}" /></f:facet>
+                                    <f:facet name="input">
+                                        <h:selectOneMenu style="width: 100%" value="#{dittaReg03RigoController.ivaFunzPanel}">
+                                            <f:selectItem itemValue="" itemLabel="" />
+                                            <f:selectItems value="#{dittaReg03RigoController.ivaFunzLista}" var="funzIva" itemLabel="#{funzIva.ivaFunzId} #{funzIva.desFunzioneIva}" itemValue="#{funzIva}"/>
+                                            <p:ajax update="funz_iva" listener="#{dittaReg03RigoController.aggiornaFunzIvaPanel(reg03Rigo)}"/>
+                                        </h:selectOneMenu>
+                                    </f:facet>
+                                </p:cellEditor>
+                            </p:column>
+
+                        </p:dataTable>
+                        <!-- FINE tabella 3 _____________________________________________-->
+
+
+
+
+
+
+                        <p:tabView id="tabReg03Panel" activeIndex="#{dittaReg03Rigo_FORM_Controller.tabIndex}" value="#{dittaReg03Rigo_FORM_Controller.reg03RigoLista}" var="reg03Rigo">
+                            <p:tab title="#{reg03Rigo.reg03RigoPK.reg03RigoRegId}.#{reg03Rigo.reg03RigoPK.reg03SubrigoRegId}">
+                                <h:panelGroup id="panM1" >
+                                    <p:outputLabel  value="M1" for="m1SelOne"/>
+                                    <p:selectOneMenu id="m1SelOne" value="#{m1Controller.selected}" autoWidth="false" style="width: 180px" filter="true" filterMatchMode="contains" >
+                                        <f:selectItem noSelectionOption="true" itemLabel="--scegli--"/>
+                                        <f:selectItems value="#{m1Controller.items}" var="m1Var" itemLabel="#{m1Var.cgTipoMasCod} #{m1Var.cgTipoMasCodDes}" itemValue="#{m1Var}"/>
+                                        <p:ajax listener="#{m1Controller.m1_aggiorna(reg03Rigo)}" update="panM2 panM3 panM4 panM5 panMc"/>
+                                    </p:selectOneMenu>
+                                </h:panelGroup>
+
+                                <h:panelGroup id="panM2" >
+                                    <p:outputLabel value="M2" style="margin-left:10px"/>
+                                    <p:selectOneMenu autoWidth="false" style="width: 180px" id="m2Menu" value="#{m2Controller.selected}" filter="true" filterMatchMode="contains">
+                                        <f:selectItem noSelectionOption="true" itemLabel="--scegli--"/>
+                                        <f:selectItems value="#{m2Controller.items}" var="m2Var" itemLabel="#{m2Var.m2Id} #{m2Var.ceeMasCodDes}" itemValue="#{m2Var}"/>
+                                        <p:ajax listener="#{m2Controller.m2_aggiorna()}" update="panM3 panM4 panM5 panMc" />  
+                                    </p:selectOneMenu>
+                                </h:panelGroup>
+
+                                <h:panelGroup id="panM3" >
+                                    <p:outputLabel  value="M3" style="margin-left:10px"/>
+                                    <p:selectOneMenu id="m3Menu" autoWidth="false" style="width: 200px" value="#{m3Controller.selected}" filter="true" filterMatchMode="contains">
+                                        <f:selectItem noSelectionOption="true" itemLabel="--scegli--"/>
+                                        <f:selectItems value="#{m3Controller.items}" var="m3Var" itemLabel="#{m3Var.m3Id} #{m3Var.ceeMas2CodDes}" itemValue="#{m3Var}"/>
+                                        <p:ajax listener="#{m3Controller.m3_aggiorna()}" update="panM4 panM2 panM5 panMc" />                                            
+                                    </p:selectOneMenu>
+                                </h:panelGroup>
+
+
+                                <h:panelGroup id="panM4" >
+                                    <p:outputLabel  value="M4" style="margin-left:10px"/>
+                                    <p:selectOneMenu autoWidth="false" style="width: 180px" id="m4Menu" value="#{m4Controller.selected}" filter="true" filterMatchMode="contains">
+                                        <f:selectItem noSelectionOption="true" itemLabel="--scegli--"/>
+                                        <f:selectItems value="#{m4Controller.items}" var="m4Var" itemLabel="#{m4Var.m4Id} #{m4Var.ceeMas3CodDes}" itemValue="#{m4Var}"/>
+                                        <p:ajax listener="#{m4Controller.m4_aggiorna()}" update="panM5 panM3 panM2 panMc" />  
+                                    </p:selectOneMenu>
+                                </h:panelGroup>
+
+
+                                <h:panelGroup id="panM5" >
+                                    <p:outputLabel  value="M5" style="margin-left:10px"/>
+                                    <p:selectOneMenu autoWidth="false" style="width: 180px" id="m5Menu" value="#{m5Controller.selected}" filter="true" filterMatchMode="contains">
+                                        <f:selectItem noSelectionOption="true" itemLabel="--scegli--"/>
+                                        <f:selectItems value="#{m5Controller.items}" var="m5Var" itemLabel="#{m5Var.m5Id} #{m5Var.ceeMas4CodDes}" itemValue="#{m5Var}"/>
+                                        <p:ajax listener="#{m5Controller.m5_aggiorna()}" update="panM4 panM3 panM2 panMc" />
+                                    </p:selectOneMenu>
+                                </h:panelGroup>
+                                <br/><br/>
+
+                                <h:panelGroup id="panMc" >
+                                    <p:outputLabel  value="Conto"/>
+                                    <p:selectOneMenu autoWidth="false" style="width: 500px" id="mcMenu" value="#{mcController.selected}" filter="true" filterMatchMode="contains">
+                                        <f:selectItem noSelectionOption="true" itemLabel="--scegli--"/>
+                                        <f:selectItems value="#{mcController.items}" var="mcVar" itemLabel="#{mcVar.m2id.m2Id} #{mcVar.m3id.m3Id} #{mcVar.m4id.m4Id} #{mcVar.m5id.m5Id} - #{mcVar.mcId} - #{mcVar.ceeContoCod} #{mcVar.ceeContoCodDes}" itemValue="#{mcVar}"/>
+                                        <p:ajax listener="#{mcController.mc_aggiorna()}" update="panM2 panM3 panM4 panM5" />
+                                    </p:selectOneMenu>
+                                </h:panelGroup>
+
+                                <h:panelGroup id="panFunzConto" >
+                                    <p:outputLabel  value="Funz. conto" style="margin-left:20px"/>
+                                    <p:inputText style="width: 50px"/>
+                                </h:panelGroup>
+
+
+                                <h:panelGroup id="panVendor" >
+                                    <p:outputLabel  value="Vendor"/>
+                                    <p:selectOneMenu autoWidth="false" style="width: 500px" id="vendorMenu" value="#{pc2048Controller.selected}" filter="true" filterMatchMode="contains">
+                                        <f:selectItem noSelectionOption="true" itemLabel="--scegli--"/>
+                                        <f:selectItems value="#{pc2048Controller.items}" var="vendorVar" itemLabel="#{vendorVar.pc2048PK.ceeCodiceCod} - #{vendorVar.ceeCodiceCognome} #{vendorVar.ceeCodiceNome} #{vendorVar.ragioneSociale}" itemValue="#{vendorVar}"/>
+                                    </p:selectOneMenu>
+                                </h:panelGroup>
+
+                                <br/><br/>
+
+                                <p:outputLabel  value="F. immobilizzazioni magazzino"/>
+                                <p:selectOneMenu autoWidth="false" filter="true" filterMatchMode="contains" style="width: 50px"/>
+
+                                <p:outputLabel  value="Codice attività"/>
+                                <p:selectOneMenu autoWidth="false" filter="true" filterMatchMode="contains" style="width: 300px"/>
+
+                                <p:outputLabel  value="% inerente att."/>
+                                <p:inputText value="#{reg03Rigo.percInerente}" style="font-weight: bold;width:50px;color: blue">
+                                    <f:convertNumber type="number" groupingUsed="true" minFractionDigits="2" pattern="#0.00"/>
+                                </p:inputText>
+
+                                <p:outputLabel  value="% det. II"/>
+                                <p:inputText value="#{reg03Rigo.percIiDeducibile}" style="font-weight: bold;width:50px;color: blue">
+                                    <f:convertNumber type="number" groupingUsed="true" minFractionDigits="2" pattern="#0.00"/>
+                                </p:inputText>
+
+                                <p:outputLabel  value="% det IRAP"/>
+                                <p:inputText value="#{reg03Rigo.percIrapDeducibile}" style="font-weight: bold;width:50px;color: blue">
+                                    <f:convertNumber type="number" groupingUsed="true" minFractionDigits="2" pattern="#0.00"/>
+                                </p:inputText>
+
+                                <p:outputLabel  value="Libro rateo"/>
+                                <p:selectOneMenu autoWidth="false" filter="true" filterMatchMode="contains" style="width: 20px"/>
+
+                                <p:outputLabel  value="accerta"/>
+                                <p:selectOneMenu autoWidth="false" filter="true" filterMatchMode="contains" style="width: 20px"/>
+
+                                <p:outputLabel  value="località"/>
+                                <p:selectOneMenu autoWidth="false" filter="true" filterMatchMode="contains" style="width: 20px"/>
+
+                                <p:outputLabel  value="CDC"/>
+                                <p:selectOneMenu autoWidth="false" filter="true" filterMatchMode="contains" style="width: 20px"/>
+
+
+
+
+                                <p:outputLabel  value="Pagato" style="margin-left:20px"/>
+                                <p:selectBooleanCheckbox value="#{reg03Rigo.pagatoDoc}">
+                                    <p:ajax listener="#{dittaReg03Rigo_FORM_Controller.aggiungiSubrighiPagato(reg03Rigo)}" update="tabReg03Panel"/>
+                                </p:selectBooleanCheckbox>
+
+                                <br/><br/> <br/><br/> <br/><br/>
+
+                                <p:outputPanel rendered="#{reg03Rigo.reg03RigoPK.reg03SubrigoRegId==0}">
+                                    <p:outputLabel  value="Funzione iva"/>
+                                    <p:selectOneMenu autoWidth="false" filter="true" filterMatchMode="contains" style="width: 300px" value="#{reg03Rigo.funIva}">
+                                        <f:selectItem itemValue="" itemLabel="" />
+                                        <f:selectItems value="#{ivaFunzioneController.items}" var="funzIva" itemLabel="#{funzIva.ivaFunzId} #{funzIva.desFunzioneIva}" itemValue="#{funzIva}"/>
+                                    </p:selectOneMenu>
+
+                                    <p:outputLabel  value="Natura iva"/>
+                                    <p:selectOneMenu autoWidth="false" filter="true" filterMatchMode="contains" style="width: 300px" value="#{dittaReg03Rigo_FORM_Controller.naturaIvaPanel}">
+                                        <f:selectItem itemValue="#{natIva}" itemLabel="" />
+                                        <f:selectItems value="#{naturaIvaController.items}" var="natIva" itemLabel="#{natIva.codNaturaIva} #{natIva.naturaIvaDescr}" itemValue="#{natIva}"/>
+                                        <p:ajax listener="#{dittaReg03Rigo_FORM_Controller.aggiornaNaturaIva(reg03Rigo)}"/>
+                                    </p:selectOneMenu>
+
+
+                                </p:outputPanel>
+
+
+
+
+
+                                <p:commandButton value="Pag" icon="ui-icon-arrowthick-1-n" iconPos="right" actionListener="#{dittaReg03RigoController.btnIndietroAction()}" update="tabReg03Panel"/>
+                                <p:commandButton value="Pag" icon="ui-icon-arrowthick-1-s" iconPos="right" actionListener="#{dittaReg03Rigo_FORM_Controller.aggiungiRigo()}" update="tabReg03Panel"/>
+                            </p:tab>
+                        </p:tabView>
+
+
+
+
+
+                        <br/>
+
+                        <p:commandButton value="Registra" actionListener="#{dittaNuovaRegistrazioneController.btnRegistraAction()}"/>
+                    </div>
+                </h:form>
+            </p:tab>
+
+            <!-- FINE form  __________________________________________________________________________-->
+
+
+            <p:tab title="Visualizza">
+                <h:form id="formVisualizza">
+
+
+                </h:form>
+
+            </p:tab>
+
+        </p:tabView>
+
+    </ui:define> 
+</ui:composition>

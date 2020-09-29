@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="MonetaCreateDlg" widgetVar="MonetaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateMonetaTitle}">
+            <h:form id="MonetaCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{monetaController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateMonetaLabel_divCod}" for="divCod" />
+                        <p:inputText id="divCod" value="#{monetaController.selected.divCod}" title="#{bundle.CreateMonetaTitle_divCod}" required="true" requiredMessage="#{bundle.CreateMonetaRequiredMessage_divCod}"/>
+                        <p:outputLabel value="#{bundle.CreateMonetaLabel_divDes}" for="divDes" />
+                        <p:inputText id="divDes" value="#{monetaController.selected.divDes}" title="#{bundle.CreateMonetaTitle_divDes}" />
+                        <p:outputLabel value="#{bundle.CreateMonetaLabel_codMoneta}" for="codMoneta" />
+                        <p:inputText id="codMoneta" value="#{monetaController.selected.codMoneta}" title="#{bundle.CreateMonetaTitle_codMoneta}" />
+                        <p:outputLabel value="#{bundle.CreateMonetaLabel_codStato}" for="codStato" />
+                        <p:inputText id="codStato" value="#{monetaController.selected.codStato}" title="#{bundle.CreateMonetaTitle_codStato}" />
+                        <p:outputLabel value="#{bundle.CreateMonetaLabel_siglaStato}" for="siglaStato" />
+                        <p:inputText id="siglaStato" value="#{monetaController.selected.siglaStato}" title="#{bundle.CreateMonetaTitle_siglaStato}" />
+                        <p:outputLabel value="#{bundle.CreateMonetaLabel_desStato}" for="desStato" />
+                        <p:inputText id="desStato" value="#{monetaController.selected.desStato}" title="#{bundle.CreateMonetaTitle_desStato}" />
+                        <p:outputLabel value="#{bundle.CreateMonetaLabel_cambio}" for="cambio" />
+                        <p:inputText id="cambio" value="#{monetaController.selected.cambio}" title="#{bundle.CreateMonetaTitle_cambio}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{monetaController.create}" value="#{bundle.Save}" update="display,:MonetaListForm:datalist,:growl" oncomplete="handleSubmit(args,'MonetaCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="MonetaCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="Dit00EditDlg" widgetVar="Dit00EditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditDit00Title}">
+            <h:form id="Dit00EditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{dit00Controller.selected != null}">
+                        <p:outputLabel value="#{bundle.EditDit00Label_id}" for="id" />
+                        <p:inputText id="id" value="#{dit00Controller.selected.id}" title="#{bundle.EditDit00Title_id}" required="true" requiredMessage="#{bundle.EditDit00RequiredMessage_id}"/>
+                        <p:outputLabel value="#{bundle.EditDit00Label_idPaeseIva}" for="idPaeseIva" />
+                        <p:inputText id="idPaeseIva" value="#{dit00Controller.selected.idPaeseIva}" title="#{bundle.EditDit00Title_idPaeseIva}" />
+                        <p:outputLabel value="#{bundle.EditDit00Label_idCodiceIva}" for="idCodiceIva" />
+                        <p:inputText id="idCodiceIva" value="#{dit00Controller.selected.idCodiceIva}" title="#{bundle.EditDit00Title_idCodiceIva}" />
+                        <p:outputLabel value="#{bundle.EditDit00Label_codiceFiscale}" for="codiceFiscale" />
+                        <p:inputText id="codiceFiscale" value="#{dit00Controller.selected.codiceFiscale}" title="#{bundle.EditDit00Title_codiceFiscale}" />
+                        <p:outputLabel value="#{bundle.EditDit00Label_denominazione}" for="denominazione" />
+                        <p:inputText id="denominazione" value="#{dit00Controller.selected.denominazione}" title="#{bundle.EditDit00Title_denominazione}" />
+                        <p:outputLabel value="#{bundle.EditDit00Label_nome}" for="nome" />
+                        <p:inputText id="nome" value="#{dit00Controller.selected.nome}" title="#{bundle.EditDit00Title_nome}" />
+                        <p:outputLabel value="#{bundle.EditDit00Label_cognome}" for="cognome" />
+                        <p:inputText id="cognome" value="#{dit00Controller.selected.cognome}" title="#{bundle.EditDit00Title_cognome}" />
+                        <p:outputLabel value="#{bundle.EditDit00Label_codiceDitta}" for="codiceDitta" />
+                        <p:inputText id="codiceDitta" value="#{dit00Controller.selected.codiceDitta}" title="#{bundle.EditDit00Title_codiceDitta}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{dit00Controller.update}" value="#{bundle.Save}" update="display,:Dit00ListForm:datalist,:growl" oncomplete="handleSubmit(args, 'Dit00EditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="Dit00EditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

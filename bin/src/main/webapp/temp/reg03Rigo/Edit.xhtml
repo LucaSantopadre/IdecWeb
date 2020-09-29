@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="Reg03RigoEditDlg" widgetVar="Reg03RigoEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditReg03RigoTitle}">
+            <h:form id="Reg03RigoEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{reg03RigoController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditReg03RigoLabel_reg03RigoPK_reg03NumRegId}" for="reg03RigoPK_reg03NumRegId" />
+                        <p:inputText id="reg03RigoPK_reg03NumRegId" value="#{reg03RigoController.selected.reg03RigoPK.reg03NumRegId}" title="#{bundle.EditReg03RigoTitle_reg03RigoPK_reg03NumRegId}" required="true" requiredMessage="#{bundle.EditReg03RigoRequiredMessage_reg03RigoPK_reg03NumRegId}"/>
+                        <p:outputLabel value="#{bundle.EditReg03RigoLabel_reg03RigoPK_reg03RigoRegId}" for="reg03RigoPK_reg03RigoRegId" />
+                        <p:inputText id="reg03RigoPK_reg03RigoRegId" value="#{reg03RigoController.selected.reg03RigoPK.reg03RigoRegId}" title="#{bundle.EditReg03RigoTitle_reg03RigoPK_reg03RigoRegId}" required="true" requiredMessage="#{bundle.EditReg03RigoRequiredMessage_reg03RigoPK_reg03RigoRegId}"/>
+                        <p:outputLabel value="#{bundle.EditReg03RigoLabel_reg03RigoPK_reg03SubrigoRegId}" for="reg03RigoPK_reg03SubrigoRegId" />
+                        <p:inputText id="reg03RigoPK_reg03SubrigoRegId" value="#{reg03RigoController.selected.reg03RigoPK.reg03SubrigoRegId}" title="#{bundle.EditReg03RigoTitle_reg03RigoPK_reg03SubrigoRegId}" required="true" requiredMessage="#{bundle.EditReg03RigoRequiredMessage_reg03RigoPK_reg03SubrigoRegId}"/>
+                        <p:outputLabel value="#{bundle.EditReg03RigoLabel_conto}" for="conto" />
+                        <p:inputText id="conto" value="#{reg03RigoController.selected.conto}" title="#{bundle.EditReg03RigoTitle_conto}" />
+                        <p:outputLabel value="#{bundle.EditReg03RigoLabel_funzConto}" for="funzConto" />
+                        <p:inputText id="funzConto" value="#{reg03RigoController.selected.funzConto}" title="#{bundle.EditReg03RigoTitle_funzConto}" />
+                        <p:outputLabel value="#{bundle.EditReg03RigoLabel_vendor}" for="vendor" />
+                        <p:inputText id="vendor" value="#{reg03RigoController.selected.vendor}" title="#{bundle.EditReg03RigoTitle_vendor}" />
+                        <p:outputLabel value="#{bundle.EditReg03RigoLabel_subconto}" for="subconto" />
+                        <p:inputText id="subconto" value="#{reg03RigoController.selected.subconto}" title="#{bundle.EditReg03RigoTitle_subconto}" />
+                        <p:outputLabel value="#{bundle.EditReg03RigoLabel_dare}" for="dare" />
+                        <p:inputText id="dare" value="#{reg03RigoController.selected.dare}" title="#{bundle.EditReg03RigoTitle_dare}" />
+                        <p:outputLabel value="#{bundle.EditReg03RigoLabel_avere}" for="avere" />
+                        <p:inputText id="avere" value="#{reg03RigoController.selected.avere}" title="#{bundle.EditReg03RigoTitle_avere}" />
+                        <p:outputLabel value="#{bundle.EditReg03RigoLabel_importoConto}" for="importoConto" />
+                        <p:inputText id="importoConto" value="#{reg03RigoController.selected.importoConto}" title="#{bundle.EditReg03RigoTitle_importoConto}" />
+                        <p:outputLabel value="#{bundle.EditReg03RigoLabel_opIva}" for="opIva" />
+                        <p:inputText id="opIva" value="#{reg03RigoController.selected.opIva}" title="#{bundle.EditReg03RigoTitle_opIva}" />
+                        <p:outputLabel value="#{bundle.EditReg03RigoLabel_funIva}" for="funIva" />
+                        <p:inputText id="funIva" value="#{reg03RigoController.selected.funIva}" title="#{bundle.EditReg03RigoTitle_funIva}" />
+                        <p:outputLabel value="#{bundle.EditReg03RigoLabel_percIva}" for="percIva" />
+                        <p:inputText id="percIva" value="#{reg03RigoController.selected.percIva}" title="#{bundle.EditReg03RigoTitle_percIva}" />
+                        <p:outputLabel value="#{bundle.EditReg03RigoLabel_percDetIva}" for="percDetIva" />
+                        <p:inputText id="percDetIva" value="#{reg03RigoController.selected.percDetIva}" title="#{bundle.EditReg03RigoTitle_percDetIva}" />
+                        <p:outputLabel value="#{bundle.EditReg03RigoLabel_ripPerc}" for="ripPerc" />
+                        <p:inputText id="ripPerc" value="#{reg03RigoController.selected.ripPerc}" title="#{bundle.EditReg03RigoTitle_ripPerc}" />
+                        <p:outputLabel value="#{bundle.EditReg03RigoLabel_ivaDetraibile}" for="ivaDetraibile" />
+                        <p:inputText id="ivaDetraibile" value="#{reg03RigoController.selected.ivaDetraibile}" title="#{bundle.EditReg03RigoTitle_ivaDetraibile}" />
+                        <p:outputLabel value="#{bundle.EditReg03RigoLabel_nonDetraibile}" for="nonDetraibile" />
+                        <p:inputText id="nonDetraibile" value="#{reg03RigoController.selected.nonDetraibile}" title="#{bundle.EditReg03RigoTitle_nonDetraibile}" />
+                        <p:outputLabel value="#{bundle.EditReg03RigoLabel_funzImmobProdotto}" for="funzImmobProdotto" />
+                        <p:inputText id="funzImmobProdotto" value="#{reg03RigoController.selected.funzImmobProdotto}" title="#{bundle.EditReg03RigoTitle_funzImmobProdotto}" />
+                        <p:outputLabel value="#{bundle.EditReg03RigoLabel_codAtt}" for="codAtt" />
+                        <p:inputText id="codAtt" value="#{reg03RigoController.selected.codAtt}" title="#{bundle.EditReg03RigoTitle_codAtt}" />
+                        <p:outputLabel value="#{bundle.EditReg03RigoLabel_percInerente}" for="percInerente" />
+                        <p:inputText id="percInerente" value="#{reg03RigoController.selected.percInerente}" title="#{bundle.EditReg03RigoTitle_percInerente}" />
+                        <p:outputLabel value="#{bundle.EditReg03RigoLabel_percIiDeducibile}" for="percIiDeducibile" />
+                        <p:inputText id="percIiDeducibile" value="#{reg03RigoController.selected.percIiDeducibile}" title="#{bundle.EditReg03RigoTitle_percIiDeducibile}" />
+                        <p:outputLabel value="#{bundle.EditReg03RigoLabel_percIrapDeducibile}" for="percIrapDeducibile" />
+                        <p:inputText id="percIrapDeducibile" value="#{reg03RigoController.selected.percIrapDeducibile}" title="#{bundle.EditReg03RigoTitle_percIrapDeducibile}" />
+                        <p:outputLabel value="#{bundle.EditReg03RigoLabel_rateo}" for="rateo" />
+                        <p:inputText id="rateo" value="#{reg03RigoController.selected.rateo}" title="#{bundle.EditReg03RigoTitle_rateo}" />
+                        <p:outputLabel value="#{bundle.EditReg03RigoLabel_accertamento}" for="accertamento" />
+                        <p:inputText id="accertamento" value="#{reg03RigoController.selected.accertamento}" title="#{bundle.EditReg03RigoTitle_accertamento}" />
+                        <p:outputLabel value="#{bundle.EditReg03RigoLabel_FV}" for="FV" />
+                        <p:inputText id="FV" value="#{reg03RigoController.selected.FV}" title="#{bundle.EditReg03RigoTitle_FV}" />
+                        <p:outputLabel value="#{bundle.EditReg03RigoLabel_localita}" for="localita" />
+                        <p:inputText id="localita" value="#{reg03RigoController.selected.localita}" title="#{bundle.EditReg03RigoTitle_localita}" />
+                        <p:outputLabel value="#{bundle.EditReg03RigoLabel_centroCosto}" for="centroCosto" />
+                        <p:inputText id="centroCosto" value="#{reg03RigoController.selected.centroCosto}" title="#{bundle.EditReg03RigoTitle_centroCosto}" />
+                        <p:outputLabel value="#{bundle.EditReg03RigoLabel_pagatoDoc}" for="pagatoDoc" />
+                        <p:selectBooleanCheckbox id="pagatoDoc" value="#{reg03RigoController.selected.pagatoDoc}" />
+                        <p:outputLabel value="#{bundle.EditReg03RigoLabel_ivaNatura}" for="ivaNatura" />
+                        <p:inputText id="ivaNatura" value="#{reg03RigoController.selected.ivaNatura}" title="#{bundle.EditReg03RigoTitle_ivaNatura}" />
+                        <p:outputLabel value="#{bundle.EditReg03RigoLabel_percIvaDeducibile}" for="percIvaDeducibile" />
+                        <p:inputText id="percIvaDeducibile" value="#{reg03RigoController.selected.percIvaDeducibile}" title="#{bundle.EditReg03RigoTitle_percIvaDeducibile}" />
+                        <p:outputLabel value="#{bundle.EditReg03RigoLabel_reg01NumRegId}" for="reg01NumRegId" />
+                        <p:selectOneMenu id="reg01NumRegId" value="#{reg03RigoController.selected.reg01NumRegId}" required="true" requiredMessage="#{bundle.EditReg03RigoRequiredMessage_reg01NumRegId}">
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{reg01Controller.itemsAvailableSelectOne}"
+                                           var="reg01NumRegIdItem"
+                                           itemValue="#{reg01NumRegIdItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{reg03RigoController.update}" value="#{bundle.Save}" update="display,:Reg03RigoListForm:datalist,:growl" oncomplete="handleSubmit(args, 'Reg03RigoEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="Reg03RigoEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

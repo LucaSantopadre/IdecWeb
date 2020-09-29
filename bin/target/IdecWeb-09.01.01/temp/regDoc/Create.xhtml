@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="RegDocCreateDlg" widgetVar="RegDocCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateRegDocTitle}">
+            <h:form id="RegDocCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{regDocController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateRegDocLabel_tipoDoc}" for="tipoDoc" />
+                        <p:inputText id="tipoDoc" value="#{regDocController.selected.tipoDoc}" title="#{bundle.CreateRegDocTitle_tipoDoc}" />
+                        <p:outputLabel value="#{bundle.CreateRegDocLabel_dataDoc}" for="dataDoc" />
+                        <p:calendar id="dataDoc" pattern="MM/dd/yyyy" value="#{regDocController.selected.dataDoc}" title="#{bundle.EditRegDocTitle_dataDoc}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateRegDocLabel_numDoc}" for="numDoc" />
+                        <p:inputText id="numDoc" value="#{regDocController.selected.numDoc}" title="#{bundle.CreateRegDocTitle_numDoc}" />
+                        <p:outputLabel value="#{bundle.CreateRegDocLabel_rifDoc}" for="rifDoc" />
+                        <p:inputText id="rifDoc" value="#{regDocController.selected.rifDoc}" title="#{bundle.CreateRegDocTitle_rifDoc}" />
+                        <p:outputLabel value="#{bundle.CreateRegDocLabel_azzeraDoc}" for="azzeraDoc" />
+                        <p:inputText id="azzeraDoc" value="#{regDocController.selected.azzeraDoc}" title="#{bundle.CreateRegDocTitle_azzeraDoc}" />
+                        <p:outputLabel value="#{bundle.CreateRegDocLabel_monetaDoc}" for="monetaDoc" />
+                        <p:inputText id="monetaDoc" value="#{regDocController.selected.monetaDoc}" title="#{bundle.CreateRegDocTitle_monetaDoc}" />
+                        <p:outputLabel value="#{bundle.CreateRegDocLabel_cambioDoc}" for="cambioDoc" />
+                        <p:inputText id="cambioDoc" value="#{regDocController.selected.cambioDoc}" title="#{bundle.CreateRegDocTitle_cambioDoc}" />
+                        <p:outputLabel value="#{bundle.CreateRegDocLabel_monetaContabileDoc}" for="monetaContabileDoc" />
+                        <p:inputText id="monetaContabileDoc" value="#{regDocController.selected.monetaContabileDoc}" title="#{bundle.CreateRegDocTitle_monetaContabileDoc}" />
+                        <p:outputLabel value="#{bundle.CreateRegDocLabel_pagatoDoc}" for="pagatoDoc" />
+                        <p:inputText id="pagatoDoc" value="#{regDocController.selected.pagatoDoc}" title="#{bundle.CreateRegDocTitle_pagatoDoc}" />
+                        <p:outputLabel value="#{bundle.CreateRegDocLabel_mezzoDiPagDoc}" for="mezzoDiPagDoc" />
+                        <p:inputText id="mezzoDiPagDoc" value="#{regDocController.selected.mezzoDiPagDoc}" title="#{bundle.CreateRegDocTitle_mezzoDiPagDoc}" />
+                        <p:outputLabel value="#{bundle.CreateRegDocLabel_ggTraScadDoc}" for="ggTraScadDoc" />
+                        <p:inputText id="ggTraScadDoc" value="#{regDocController.selected.ggTraScadDoc}" title="#{bundle.CreateRegDocTitle_ggTraScadDoc}" />
+                        <p:outputLabel value="#{bundle.CreateRegDocLabel_dataScadDoc}" for="dataScadDoc" />
+                        <p:calendar id="dataScadDoc" pattern="MM/dd/yyyy" value="#{regDocController.selected.dataScadDoc}" title="#{bundle.EditRegDocTitle_dataScadDoc}"  showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateRegDocLabel_regDocId}" for="regDocId" />
+                        <p:inputText id="regDocId" value="#{regDocController.selected.regDocId}" title="#{bundle.CreateRegDocTitle_regDocId}" required="true" requiredMessage="#{bundle.CreateRegDocRequiredMessage_regDocId}"/>
+                        <p:outputLabel value="#{bundle.CreateRegDocLabel_reg03Rigo}" for="reg03Rigo" />
+                        <p:selectOneMenu id="reg03Rigo" value="#{regDocController.selected.reg03Rigo}" >
+                            <f:selectItems value="#{reg03RigoController.itemsAvailableSelectOne}"
+                                           var="reg03RigoItem"
+                                           itemValue="#{reg03RigoItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{regDocController.create}" value="#{bundle.Save}" update="display,:RegDocListForm:datalist,:growl" oncomplete="handleSubmit(args,'RegDocCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="RegDocCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

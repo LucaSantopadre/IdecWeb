@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="NaturaIvaCreateDlg" widgetVar="NaturaIvaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateNaturaIvaTitle}">
+            <h:form id="NaturaIvaCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{naturaIvaController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateNaturaIvaLabel_naturaIvaId}" for="naturaIvaId" />
+                        <p:inputText id="naturaIvaId" value="#{naturaIvaController.selected.naturaIvaId}" title="#{bundle.CreateNaturaIvaTitle_naturaIvaId}" required="true" requiredMessage="#{bundle.CreateNaturaIvaRequiredMessage_naturaIvaId}"/>
+                        <p:outputLabel value="#{bundle.CreateNaturaIvaLabel_codNaturaIva}" for="codNaturaIva" />
+                        <p:inputText id="codNaturaIva" value="#{naturaIvaController.selected.codNaturaIva}" title="#{bundle.CreateNaturaIvaTitle_codNaturaIva}" />
+                        <p:outputLabel value="#{bundle.CreateNaturaIvaLabel_naturaIvaDescr}" for="naturaIvaDescr" />
+                        <p:inputText id="naturaIvaDescr" value="#{naturaIvaController.selected.naturaIvaDescr}" title="#{bundle.CreateNaturaIvaTitle_naturaIvaDescr}" />
+                        <p:outputLabel value="#{bundle.CreateNaturaIvaLabel_idecCod}" for="idecCod" />
+                        <p:inputText id="idecCod" value="#{naturaIvaController.selected.idecCod}" title="#{bundle.CreateNaturaIvaTitle_idecCod}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{naturaIvaController.create}" value="#{bundle.Save}" update="display,:NaturaIvaListForm:datalist,:growl" oncomplete="handleSubmit(args,'NaturaIvaCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="NaturaIvaCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

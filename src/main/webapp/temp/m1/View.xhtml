@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="M1ViewDlg" widgetVar="M1ViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewM1Title}">
+            <h:form id="M1ViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{m1Controller.selected != null}">
+                        <h:outputText value="#{bundle.ViewM1Label_cgTipoMasCod}"/>
+                        <h:outputText value="#{m1Controller.selected.cgTipoMasCod}" title="#{bundle.ViewM1Title_cgTipoMasCod}"/>
+                        <h:outputText value="#{bundle.ViewM1Label_cgTipoMasCodDes}"/>
+                        <h:outputText value="#{m1Controller.selected.cgTipoMasCodDes}" title="#{bundle.ViewM1Title_cgTipoMasCodDes}"/>
+                        <h:outputText value="#{bundle.ViewM1Label_dallaDataAdmin}"/>
+                        <h:outputText value="#{m1Controller.selected.dallaDataAdmin}" title="#{bundle.ViewM1Title_dallaDataAdmin}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewM1Label_allaDataAdmin}"/>
+                        <h:outputText value="#{m1Controller.selected.allaDataAdmin}" title="#{bundle.ViewM1Title_allaDataAdmin}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewM1Label_admin}"/>
+                        <h:outputText value="#{m1Controller.selected.admin}" title="#{bundle.ViewM1Title_admin}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="M1ViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

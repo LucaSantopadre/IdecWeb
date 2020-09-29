@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="Pc2048EditDlg" widgetVar="Pc2048EditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditPc2048Title}">
+            <h:form id="Pc2048EditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{pc2048Controller.selected != null}">
+                        <p:outputLabel value="#{bundle.EditPc2048Label_pc2048PK_ceeMas3Cod}" for="pc2048PK_ceeMas3Cod" />
+                        <p:inputText id="pc2048PK_ceeMas3Cod" value="#{pc2048Controller.selected.pc2048PK.ceeMas3Cod}" title="#{bundle.EditPc2048Title_pc2048PK_ceeMas3Cod}" required="true" requiredMessage="#{bundle.EditPc2048RequiredMessage_pc2048PK_ceeMas3Cod}"/>
+                        <p:outputLabel value="#{bundle.EditPc2048Label_pc2048PK_ceeMas4Cod}" for="pc2048PK_ceeMas4Cod" />
+                        <p:inputText id="pc2048PK_ceeMas4Cod" value="#{pc2048Controller.selected.pc2048PK.ceeMas4Cod}" title="#{bundle.EditPc2048Title_pc2048PK_ceeMas4Cod}" required="true" requiredMessage="#{bundle.EditPc2048RequiredMessage_pc2048PK_ceeMas4Cod}"/>
+                        <p:outputLabel value="#{bundle.EditPc2048Label_pc2048PK_cgTipoMasCod}" for="pc2048PK_cgTipoMasCod" />
+                        <p:inputText id="pc2048PK_cgTipoMasCod" value="#{pc2048Controller.selected.pc2048PK.cgTipoMasCod}" title="#{bundle.EditPc2048Title_pc2048PK_cgTipoMasCod}" required="true" requiredMessage="#{bundle.EditPc2048RequiredMessage_pc2048PK_cgTipoMasCod}"/>
+                        <p:outputLabel value="#{bundle.EditPc2048Label_pc2048PK_ceeMas2Cod}" for="pc2048PK_ceeMas2Cod" />
+                        <p:inputText id="pc2048PK_ceeMas2Cod" value="#{pc2048Controller.selected.pc2048PK.ceeMas2Cod}" title="#{bundle.EditPc2048Title_pc2048PK_ceeMas2Cod}" required="true" requiredMessage="#{bundle.EditPc2048RequiredMessage_pc2048PK_ceeMas2Cod}"/>
+                        <p:outputLabel value="#{bundle.EditPc2048Label_pc2048PK_ceeContoCod}" for="pc2048PK_ceeContoCod" />
+                        <p:inputText id="pc2048PK_ceeContoCod" value="#{pc2048Controller.selected.pc2048PK.ceeContoCod}" title="#{bundle.EditPc2048Title_pc2048PK_ceeContoCod}" required="true" requiredMessage="#{bundle.EditPc2048RequiredMessage_pc2048PK_ceeContoCod}"/>
+                        <p:outputLabel value="#{bundle.EditPc2048Label_pc2048PK_ceeMasCod}" for="pc2048PK_ceeMasCod" />
+                        <p:inputText id="pc2048PK_ceeMasCod" value="#{pc2048Controller.selected.pc2048PK.ceeMasCod}" title="#{bundle.EditPc2048Title_pc2048PK_ceeMasCod}" required="true" requiredMessage="#{bundle.EditPc2048RequiredMessage_pc2048PK_ceeMasCod}"/>
+                        <p:outputLabel value="#{bundle.EditPc2048Label_pc2048PK_ceeCodiceCod}" for="pc2048PK_ceeCodiceCod" />
+                        <p:inputText id="pc2048PK_ceeCodiceCod" value="#{pc2048Controller.selected.pc2048PK.ceeCodiceCod}" title="#{bundle.EditPc2048Title_pc2048PK_ceeCodiceCod}" required="true" requiredMessage="#{bundle.EditPc2048RequiredMessage_pc2048PK_ceeCodiceCod}"/>
+                        <p:outputLabel value="#{bundle.EditPc2048Label_ceeCodiceCognome}" for="ceeCodiceCognome" />
+                        <p:inputText id="ceeCodiceCognome" value="#{pc2048Controller.selected.ceeCodiceCognome}" title="#{bundle.EditPc2048Title_ceeCodiceCognome}" />
+                        <p:outputLabel value="#{bundle.EditPc2048Label_ceeCodiceNome}" for="ceeCodiceNome" />
+                        <p:inputText id="ceeCodiceNome" value="#{pc2048Controller.selected.ceeCodiceNome}" title="#{bundle.EditPc2048Title_ceeCodiceNome}" />
+                        <p:outputLabel value="#{bundle.EditPc2048Label_partIva}" for="partIva" />
+                        <p:inputText id="partIva" value="#{pc2048Controller.selected.partIva}" title="#{bundle.EditPc2048Title_partIva}" />
+                        <p:outputLabel value="#{bundle.EditPc2048Label_comune}" for="comune" />
+                        <p:inputText id="comune" value="#{pc2048Controller.selected.comune}" title="#{bundle.EditPc2048Title_comune}" />
+                        <p:outputLabel value="#{bundle.EditPc2048Label_fiscCod}" for="fiscCod" />
+                        <p:inputText id="fiscCod" value="#{pc2048Controller.selected.fiscCod}" title="#{bundle.EditPc2048Title_fiscCod}" />
+                        <p:outputLabel value="#{bundle.EditPc2048Label_annoObbligatorio}" for="annoObbligatorio" />
+                        <p:inputText id="annoObbligatorio" value="#{pc2048Controller.selected.annoObbligatorio}" title="#{bundle.EditPc2048Title_annoObbligatorio}" />
+                        <p:outputLabel value="#{bundle.EditPc2048Label_associaCodice}" for="associaCodice" />
+                        <p:inputText id="associaCodice" value="#{pc2048Controller.selected.associaCodice}" title="#{bundle.EditPc2048Title_associaCodice}" />
+                        <p:outputLabel value="#{bundle.EditPc2048Label_siglaNazione}" for="siglaNazione" />
+                        <p:inputText id="siglaNazione" value="#{pc2048Controller.selected.siglaNazione}" title="#{bundle.EditPc2048Title_siglaNazione}" required="true" requiredMessage="#{bundle.EditPc2048RequiredMessage_siglaNazione}"/>
+                        <p:outputLabel value="#{bundle.EditPc2048Label_privato}" for="privato" />
+                        <p:inputText id="privato" value="#{pc2048Controller.selected.privato}" title="#{bundle.EditPc2048Title_privato}" required="true" requiredMessage="#{bundle.EditPc2048RequiredMessage_privato}"/>
+                        <p:outputLabel value="#{bundle.EditPc2048Label_ragioneSociale}" for="ragioneSociale" />
+                        <p:inputText id="ragioneSociale" value="#{pc2048Controller.selected.ragioneSociale}" title="#{bundle.EditPc2048Title_ragioneSociale}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{pc2048Controller.update}" value="#{bundle.Save}" update="display,:Pc2048ListForm:datalist,:growl" oncomplete="handleSubmit(args, 'Pc2048EditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="Pc2048EditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

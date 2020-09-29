@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="M2ViewDlg" widgetVar="M2ViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewM2Title}">
+            <h:form id="M2ViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{m2Controller.selected != null}">
+                        <h:outputText value="#{bundle.ViewM2Label_m2Id}"/>
+                        <h:outputText value="#{m2Controller.selected.m2Id}" title="#{bundle.ViewM2Title_m2Id}"/>
+                        <h:outputText value="#{bundle.ViewM2Label_ceeMasCodIdex}"/>
+                        <h:outputText value="#{m2Controller.selected.ceeMasCodIdex}" title="#{bundle.ViewM2Title_ceeMasCodIdex}"/>
+                        <h:outputText value="#{bundle.ViewM2Label_ceeMasCodDes}"/>
+                        <h:outputText value="#{m2Controller.selected.ceeMasCodDes}" title="#{bundle.ViewM2Title_ceeMasCodDes}"/>
+                        <h:outputText value="#{bundle.ViewM2Label_cee}"/>
+                        <h:outputText value="#{m2Controller.selected.cee}" title="#{bundle.ViewM2Title_cee}"/>
+                        <h:outputText value="#{bundle.ViewM2Label_privato}"/>
+                        <h:outputText value="#{m2Controller.selected.privato}" title="#{bundle.ViewM2Title_privato}"/>
+                        <h:outputText value="#{bundle.ViewM2Label_chkEntroAnno}"/>
+                        <h:outputText value="#{m2Controller.selected.chkEntroAnno}" title="#{bundle.ViewM2Title_chkEntroAnno}"/>
+                        <h:outputText value="#{bundle.ViewM2Label_chkOltreAnno}"/>
+                        <h:outputText value="#{m2Controller.selected.chkOltreAnno}" title="#{bundle.ViewM2Title_chkOltreAnno}"/>
+                        <h:outputText value="#{bundle.ViewM2Label_chkEntro5Anni}"/>
+                        <h:outputText value="#{m2Controller.selected.chkEntro5Anni}" title="#{bundle.ViewM2Title_chkEntro5Anni}"/>
+                        <h:outputText value="#{bundle.ViewM2Label_chkOltre5Anni}"/>
+                        <h:outputText value="#{m2Controller.selected.chkOltre5Anni}" title="#{bundle.ViewM2Title_chkOltre5Anni}"/>
+                        <h:outputText value="#{bundle.ViewM2Label_dallaDataAdmin}"/>
+                        <h:outputText value="#{m2Controller.selected.dallaDataAdmin}" title="#{bundle.ViewM2Title_dallaDataAdmin}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewM2Label_allaDataAdmin}"/>
+                        <h:outputText value="#{m2Controller.selected.allaDataAdmin}" title="#{bundle.ViewM2Title_allaDataAdmin}">
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewM2Label_admin}"/>
+                        <h:outputText value="#{m2Controller.selected.admin}" title="#{bundle.ViewM2Title_admin}"/>
+                        <h:outputText value="#{bundle.ViewM2Label_cgtipomascodID}"/>
+                        <h:outputText value="#{m2Controller.selected.cgtipomascodID}" title="#{bundle.ViewM2Title_cgtipomascodID}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="M2ViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="IvaFunzioneCreateDlg" widgetVar="IvaFunzioneCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateIvaFunzioneTitle}">
+            <h:form id="IvaFunzioneCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{ivaFunzioneController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateIvaFunzioneLabel_ivaFunzId}" for="ivaFunzId" />
+                        <p:inputText id="ivaFunzId" value="#{ivaFunzioneController.selected.ivaFunzId}" title="#{bundle.CreateIvaFunzioneTitle_ivaFunzId}" required="true" requiredMessage="#{bundle.CreateIvaFunzioneRequiredMessage_ivaFunzId}"/>
+                        <p:outputLabel value="#{bundle.CreateIvaFunzioneLabel_AVN}" for="AVN" />
+                        <p:inputText id="AVN" value="#{ivaFunzioneController.selected.AVN}" title="#{bundle.CreateIvaFunzioneTitle_AVN}" required="true" requiredMessage="#{bundle.CreateIvaFunzioneRequiredMessage_AVN}"/>
+                        <p:outputLabel value="#{bundle.CreateIvaFunzioneLabel_desFunzioneIva}" for="desFunzioneIva" />
+                        <p:inputText id="desFunzioneIva" value="#{ivaFunzioneController.selected.desFunzioneIva}" title="#{bundle.CreateIvaFunzioneTitle_desFunzioneIva}" required="true" requiredMessage="#{bundle.CreateIvaFunzioneRequiredMessage_desFunzioneIva}"/>
+                        <p:outputLabel value="#{bundle.CreateIvaFunzioneLabel_tipoOperazioneIva}" for="tipoOperazioneIva" />
+                        <p:inputText id="tipoOperazioneIva" value="#{ivaFunzioneController.selected.tipoOperazioneIva}" title="#{bundle.CreateIvaFunzioneTitle_tipoOperazioneIva}" />
+                        <p:outputLabel value="#{bundle.CreateIvaFunzioneLabel_sommaImponibile}" for="sommaImponibile" />
+                        <p:inputText id="sommaImponibile" value="#{ivaFunzioneController.selected.sommaImponibile}" title="#{bundle.CreateIvaFunzioneTitle_sommaImponibile}" required="true" requiredMessage="#{bundle.CreateIvaFunzioneRequiredMessage_sommaImponibile}"/>
+                        <p:outputLabel value="#{bundle.CreateIvaFunzioneLabel_libroTipoStornoIva}" for="libroTipoStornoIva" />
+                        <p:inputText id="libroTipoStornoIva" value="#{ivaFunzioneController.selected.libroTipoStornoIva}" title="#{bundle.CreateIvaFunzioneTitle_libroTipoStornoIva}" required="true" requiredMessage="#{bundle.CreateIvaFunzioneRequiredMessage_libroTipoStornoIva}"/>
+                        <p:outputLabel value="#{bundle.CreateIvaFunzioneLabel_libroStornoIva}" for="libroStornoIva" />
+                        <p:inputText id="libroStornoIva" value="#{ivaFunzioneController.selected.libroStornoIva}" title="#{bundle.CreateIvaFunzioneTitle_libroStornoIva}" required="true" requiredMessage="#{bundle.CreateIvaFunzioneRequiredMessage_libroStornoIva}"/>
+                        <p:outputLabel value="#{bundle.CreateIvaFunzioneLabel_causaleStornoIva}" for="causaleStornoIva" />
+                        <p:inputText id="causaleStornoIva" value="#{ivaFunzioneController.selected.causaleStornoIva}" title="#{bundle.CreateIvaFunzioneTitle_causaleStornoIva}" />
+                        <p:outputLabel value="#{bundle.CreateIvaFunzioneLabel_contoIva}" for="contoIva" />
+                        <p:inputText id="contoIva" value="#{ivaFunzioneController.selected.contoIva}" title="#{bundle.CreateIvaFunzioneTitle_contoIva}" />
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{ivaFunzioneController.create}" value="#{bundle.Save}" update="display,:IvaFunzioneListForm:datalist,:growl" oncomplete="handleSubmit(args,'IvaFunzioneCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="IvaFunzioneCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

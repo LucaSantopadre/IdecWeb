@@ -1,0 +1,78 @@
+.ui-widget {
+    font-size: 11px !important;
+}
+.ui-layout-north {
+    z-index: 20 !important;
+    overflow: visible !important;;
+}
+.ui-layout-north .ui-layout-unit-content {  
+    overflow: visible !important;
+}
+
+.ui-widget input, .ui-widget select, .ui-widget textarea, .ui-widget button {
+    font-family: Arial,sans-serif;
+    font-size: 11px;
+}
+.ui-button {
+    margin-top: 12px !important;
+}
+
+
+.ui-inputfield, .ui-widget-content .ui-inputfield, .ui-widget-header .ui-inputfield {
+    background: #fff;
+    color: #313131;
+    box-shadow: none !important;
+}
+
+
+#formdiv {
+    display: table;
+    margin: 0 auto;
+}
+.ui-datatable{
+    width: 800px;
+}
+.ui-datatable table {
+    border-collapse: collapse;
+    width: 100%;
+    table-layout: fixed;
+    height: 20px;
+}
+.ui-datatable .ui-datatable-data  {
+    border-color: inherit;
+    font-size: 11px;
+    cursor: pointer;
+    height: 20px; 
+}
+th {
+    font-size: 10px;
+}
+
+.ui-widget-header .ui-state-default {
+    border: 1px solid #a8a8a8;
+    background: #c2dfef;
+    font-weight: bold;
+    color: #4f4f4f;
+}
+table tr td {
+    height: 20px;
+}
+
+.ui-tabs {
+    position: relative;
+    zoom: 1;
+    border: none;
+}
+
+.ui-tabs .ui-tabs-nav {
+    background-color: white;
+}
+
+div.ui-cell-editor-output{
+    width: 500px;
+}
+
+.ui-tree .ui-tree-container {
+    height: 500px;
+}
+

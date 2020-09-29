@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="Reg04IvaCreateDlg" widgetVar="Reg04IvaCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateReg04IvaTitle}">
+            <h:form id="Reg04IvaCreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{reg04IvaController.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateReg04IvaLabel_ivaOp}" for="ivaOp" />
+                        <p:inputText id="ivaOp" value="#{reg04IvaController.selected.ivaOp}" title="#{bundle.CreateReg04IvaTitle_ivaOp}" />
+                        <p:outputLabel value="#{bundle.CreateReg04IvaLabel_ivaFun}" for="ivaFun" />
+                        <p:inputText id="ivaFun" value="#{reg04IvaController.selected.ivaFun}" title="#{bundle.CreateReg04IvaTitle_ivaFun}" />
+                        <p:outputLabel value="#{bundle.CreateReg04IvaLabel_ivaPerc}" for="ivaPerc" />
+                        <p:inputText id="ivaPerc" value="#{reg04IvaController.selected.ivaPerc}" title="#{bundle.CreateReg04IvaTitle_ivaPerc}" />
+                        <p:outputLabel value="#{bundle.CreateReg04IvaLabel_ivaPercDet}" for="ivaPercDet" />
+                        <p:inputText id="ivaPercDet" value="#{reg04IvaController.selected.ivaPercDet}" title="#{bundle.CreateReg04IvaTitle_ivaPercDet}" />
+                        <p:outputLabel value="#{bundle.CreateReg04IvaLabel_ivaRipartoAcq}" for="ivaRipartoAcq" />
+                        <p:inputText id="ivaRipartoAcq" value="#{reg04IvaController.selected.ivaRipartoAcq}" title="#{bundle.CreateReg04IvaTitle_ivaRipartoAcq}" />
+                        <p:outputLabel value="#{bundle.CreateReg04IvaLabel_ivaImposta}" for="ivaImposta" />
+                        <p:inputText id="ivaImposta" value="#{reg04IvaController.selected.ivaImposta}" title="#{bundle.CreateReg04IvaTitle_ivaImposta}" />
+                        <p:outputLabel value="#{bundle.CreateReg04IvaLabel_ivaImportoNonDet}" for="ivaImportoNonDet" />
+                        <p:inputText id="ivaImportoNonDet" value="#{reg04IvaController.selected.ivaImportoNonDet}" title="#{bundle.CreateReg04IvaTitle_ivaImportoNonDet}" />
+                        <p:outputLabel value="#{bundle.CreateReg04IvaLabel_ivaNatura}" for="ivaNatura" />
+                        <p:inputText id="ivaNatura" value="#{reg04IvaController.selected.ivaNatura}" title="#{bundle.CreateReg04IvaTitle_ivaNatura}" />
+                        <p:outputLabel value="#{bundle.CreateReg04IvaLabel_ivaPercDed}" for="ivaPercDed" />
+                        <p:inputText id="ivaPercDed" value="#{reg04IvaController.selected.ivaPercDed}" title="#{bundle.CreateReg04IvaTitle_ivaPercDed}" />
+                        <p:outputLabel value="#{bundle.CreateReg04IvaLabel_ivaImportoDed}" for="ivaImportoDed" />
+                        <p:inputText id="ivaImportoDed" value="#{reg04IvaController.selected.ivaImportoDed}" title="#{bundle.CreateReg04IvaTitle_ivaImportoDed}" />
+                        <p:outputLabel value="#{bundle.CreateReg04IvaLabel_ivaPercNonDet}" for="ivaPercNonDet" />
+                        <p:inputText id="ivaPercNonDet" value="#{reg04IvaController.selected.ivaPercNonDet}" title="#{bundle.CreateReg04IvaTitle_ivaPercNonDet}" />
+                        <p:outputLabel value="#{bundle.CreateReg04IvaLabel_ivaImportoDet}" for="ivaImportoDet" />
+                        <p:inputText id="ivaImportoDet" value="#{reg04IvaController.selected.ivaImportoDet}" title="#{bundle.CreateReg04IvaTitle_ivaImportoDet}" />
+                        <p:outputLabel value="#{bundle.CreateReg04IvaLabel_reg04IvaId}" for="reg04IvaId" />
+                        <p:inputText id="reg04IvaId" value="#{reg04IvaController.selected.reg04IvaId}" title="#{bundle.CreateReg04IvaTitle_reg04IvaId}" required="true" requiredMessage="#{bundle.CreateReg04IvaRequiredMessage_reg04IvaId}"/>
+                        <p:outputLabel value="#{bundle.CreateReg04IvaLabel_reg03Rigo}" for="reg03Rigo" />
+                        <p:selectOneMenu id="reg03Rigo" value="#{reg04IvaController.selected.reg03Rigo}" required="true" requiredMessage="#{bundle.EditReg04IvaRequiredMessage_reg03Rigo}">
+                            <f:selectItems value="#{reg03RigoController.itemsAvailableSelectOne}"
+                                           var="reg03RigoItem"
+                                           itemValue="#{reg03RigoItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{reg04IvaController.create}" value="#{bundle.Save}" update="display,:Reg04IvaListForm:datalist,:growl" oncomplete="handleSubmit(args,'Reg04IvaCreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="Reg04IvaCreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

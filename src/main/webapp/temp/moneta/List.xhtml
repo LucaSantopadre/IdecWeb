@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition template="/template.xhtml">
+
+
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListMonetaTitle}"></h:outputText>
+        </ui:define>
+
+        <ui:define name="body">
+            <h:form id="MonetaListForm">
+                <p:panel header="#{bundle.ListMonetaTitle}">
+                    <p:dataTable id="datalist" value="#{monetaController.items}" var="item"
+                                 selectionMode="single" selection="#{monetaController.selected}"
+                                 paginator="true"
+                                 rowKey="#{item.divCod}"
+                                 rows="10"
+                                 rowsPerPageTemplate="10,20,30,40,50"
+                                 >
+
+                        <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
+                        <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMonetaTitle_divCod}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.divCod}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMonetaTitle_divDes}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.divDes}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMonetaTitle_codMoneta}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codMoneta}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMonetaTitle_codStato}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codStato}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMonetaTitle_siglaStato}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.siglaStato}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMonetaTitle_desStato}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.desStato}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListMonetaTitle_cambio}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.cambio}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            <p:commandButton id="createButton" icon="ui-icon-plus"   value="#{bundle.Create}" actionListener="#{monetaController.prepareCreate}" update=":MonetaCreateForm" oncomplete="PF('MonetaCreateDialog').show()"/>
+                            <p:commandButton id="viewButton"   icon="ui-icon-search" value="#{bundle.View}" update=":MonetaViewForm" oncomplete="PF('MonetaViewDialog').show()" disabled="#{empty monetaController.selected}"/>
+                            <p:commandButton id="editButton"   icon="ui-icon-pencil" value="#{bundle.Edit}" update=":MonetaEditForm" oncomplete="PF('MonetaEditDialog').show()" disabled="#{empty monetaController.selected}"/>
+                            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="#{bundle.Delete}" actionListener="#{monetaController.destroy}" update=":growl,datalist" disabled="#{empty monetaController.selected}"/>
+                        </f:facet>
+                    </p:dataTable>
+                </p:panel>
+            </h:form>
+
+            <ui:include src="Create.xhtml"/>
+            <ui:include src="Edit.xhtml"/>
+            <ui:include src="View.xhtml"/>
+        </ui:define>
+    </ui:composition>
+
+</html>

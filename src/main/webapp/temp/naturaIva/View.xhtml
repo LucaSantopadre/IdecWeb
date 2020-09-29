@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="NaturaIvaViewDlg" widgetVar="NaturaIvaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewNaturaIvaTitle}">
+            <h:form id="NaturaIvaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{naturaIvaController.selected != null}">
+                        <h:outputText value="#{bundle.ViewNaturaIvaLabel_naturaIvaId}"/>
+                        <h:outputText value="#{naturaIvaController.selected.naturaIvaId}" title="#{bundle.ViewNaturaIvaTitle_naturaIvaId}"/>
+                        <h:outputText value="#{bundle.ViewNaturaIvaLabel_codNaturaIva}"/>
+                        <h:outputText value="#{naturaIvaController.selected.codNaturaIva}" title="#{bundle.ViewNaturaIvaTitle_codNaturaIva}"/>
+                        <h:outputText value="#{bundle.ViewNaturaIvaLabel_naturaIvaDescr}"/>
+                        <h:outputText value="#{naturaIvaController.selected.naturaIvaDescr}" title="#{bundle.ViewNaturaIvaTitle_naturaIvaDescr}"/>
+                        <h:outputText value="#{bundle.ViewNaturaIvaLabel_idecCod}"/>
+                        <h:outputText value="#{naturaIvaController.selected.idecCod}" title="#{bundle.ViewNaturaIvaTitle_idecCod}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="NaturaIvaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

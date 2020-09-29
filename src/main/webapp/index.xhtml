@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
+        <title>Idec - web</title>
+    </h:head>
+
+    <h:body>
+        <div id="formdiv">
+            <p:link href="http://www.iocg.it/">
+                <h:graphicImage name="img/logo.jpg" />
+            </p:link>
+
+            <h:form>
+                <h1>Benvenuto in Idec web</h1>
+                <h4>Inserisci email e password e premi entra!</h4>
+                <h:panelGrid columns="1">         
+                    <p:inputText id="emailLogin" placeholder="12. Digita tua Email" value="#{loginController.user}" required="true" requiredMessage="Email mancante!"></p:inputText>
+                    <p:password id="passwordLogin" placeholder="13. Digita tua password" value="#{loginController.pwd}" required="true" requiredMessage="Password mancante!"></p:password>
+
+                    <h:commandButton id="btnEntra" action="#{loginController.validateUsernamePassword}"  value="Entra">
+                    </h:commandButton>
+                    <p:messages />
+                </h:panelGrid>
+
+
+                
+                
+                <h:commandButton id="btn" action="#{panelSpesometroController.avvia_fatture_emesse}"  value="spes1"/>
+            </h:form>
+        </div>
+        <br />
+    </h:body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</html>

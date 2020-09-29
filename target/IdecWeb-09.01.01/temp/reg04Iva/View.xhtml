@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="Reg04IvaViewDlg" widgetVar="Reg04IvaViewDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.ViewReg04IvaTitle}">
+            <h:form id="Reg04IvaViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{reg04IvaController.selected != null}">
+                        <h:outputText value="#{bundle.ViewReg04IvaLabel_ivaOp}"/>
+                        <h:outputText value="#{reg04IvaController.selected.ivaOp}" title="#{bundle.ViewReg04IvaTitle_ivaOp}"/>
+                        <h:outputText value="#{bundle.ViewReg04IvaLabel_ivaFun}"/>
+                        <h:outputText value="#{reg04IvaController.selected.ivaFun}" title="#{bundle.ViewReg04IvaTitle_ivaFun}"/>
+                        <h:outputText value="#{bundle.ViewReg04IvaLabel_ivaPerc}"/>
+                        <h:outputText value="#{reg04IvaController.selected.ivaPerc}" title="#{bundle.ViewReg04IvaTitle_ivaPerc}"/>
+                        <h:outputText value="#{bundle.ViewReg04IvaLabel_ivaPercDet}"/>
+                        <h:outputText value="#{reg04IvaController.selected.ivaPercDet}" title="#{bundle.ViewReg04IvaTitle_ivaPercDet}"/>
+                        <h:outputText value="#{bundle.ViewReg04IvaLabel_ivaRipartoAcq}"/>
+                        <h:outputText value="#{reg04IvaController.selected.ivaRipartoAcq}" title="#{bundle.ViewReg04IvaTitle_ivaRipartoAcq}"/>
+                        <h:outputText value="#{bundle.ViewReg04IvaLabel_ivaImposta}"/>
+                        <h:outputText value="#{reg04IvaController.selected.ivaImposta}" title="#{bundle.ViewReg04IvaTitle_ivaImposta}"/>
+                        <h:outputText value="#{bundle.ViewReg04IvaLabel_ivaImportoNonDet}"/>
+                        <h:outputText value="#{reg04IvaController.selected.ivaImportoNonDet}" title="#{bundle.ViewReg04IvaTitle_ivaImportoNonDet}"/>
+                        <h:outputText value="#{bundle.ViewReg04IvaLabel_ivaNatura}"/>
+                        <h:outputText value="#{reg04IvaController.selected.ivaNatura}" title="#{bundle.ViewReg04IvaTitle_ivaNatura}"/>
+                        <h:outputText value="#{bundle.ViewReg04IvaLabel_ivaPercDed}"/>
+                        <h:outputText value="#{reg04IvaController.selected.ivaPercDed}" title="#{bundle.ViewReg04IvaTitle_ivaPercDed}"/>
+                        <h:outputText value="#{bundle.ViewReg04IvaLabel_ivaImportoDed}"/>
+                        <h:outputText value="#{reg04IvaController.selected.ivaImportoDed}" title="#{bundle.ViewReg04IvaTitle_ivaImportoDed}"/>
+                        <h:outputText value="#{bundle.ViewReg04IvaLabel_ivaPercNonDet}"/>
+                        <h:outputText value="#{reg04IvaController.selected.ivaPercNonDet}" title="#{bundle.ViewReg04IvaTitle_ivaPercNonDet}"/>
+                        <h:outputText value="#{bundle.ViewReg04IvaLabel_ivaImportoDet}"/>
+                        <h:outputText value="#{reg04IvaController.selected.ivaImportoDet}" title="#{bundle.ViewReg04IvaTitle_ivaImportoDet}"/>
+                        <h:outputText value="#{bundle.ViewReg04IvaLabel_reg04IvaId}"/>
+                        <h:outputText value="#{reg04IvaController.selected.reg04IvaId}" title="#{bundle.ViewReg04IvaTitle_reg04IvaId}"/>
+                        <h:outputText value="#{bundle.ViewReg04IvaLabel_reg03Rigo}"/>
+                        <h:outputText value="#{reg04IvaController.selected.reg03Rigo}" title="#{bundle.ViewReg04IvaTitle_reg03Rigo}"/>
+                    </p:panelGrid>
+                    <p:commandButton value="#{bundle.Close}" onclick="Reg04IvaViewDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

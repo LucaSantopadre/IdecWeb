@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="Vendor02SedeEditDlg" widgetVar="Vendor02SedeEditDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.EditVendor02SedeTitle}">
+            <h:form id="Vendor02SedeEditForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{vendor02SedeController.selected != null}">
+                        <p:outputLabel value="#{bundle.EditVendor02SedeLabel_vendor02Id}" for="vendor02Id" />
+                        <p:inputText id="vendor02Id" value="#{vendor02SedeController.selected.vendor02Id}" title="#{bundle.EditVendor02SedeTitle_vendor02Id}" required="true" requiredMessage="#{bundle.EditVendor02SedeRequiredMessage_vendor02Id}"/>
+                        <p:outputLabel value="#{bundle.EditVendor02SedeLabel_vendor01Id}" for="vendor01Id" />
+                        <p:inputText id="vendor01Id" value="#{vendor02SedeController.selected.vendor01Id}" title="#{bundle.EditVendor02SedeTitle_vendor01Id}" />
+                        <p:outputLabel value="#{bundle.EditVendor02SedeLabel_vendor02Via}" for="vendor02Via" />
+                        <p:inputText id="vendor02Via" value="#{vendor02SedeController.selected.vendor02Via}" title="#{bundle.EditVendor02SedeTitle_vendor02Via}" />
+                        <p:outputLabel value="#{bundle.EditVendor02SedeLabel_vendor02NumCivico}" for="vendor02NumCivico" />
+                        <p:inputText id="vendor02NumCivico" value="#{vendor02SedeController.selected.vendor02NumCivico}" title="#{bundle.EditVendor02SedeTitle_vendor02NumCivico}" />
+                        <p:outputLabel value="#{bundle.EditVendor02SedeLabel_vendor02017coIdComune}" for="vendor02017coIdComune" />
+                        <p:inputText id="vendor02017coIdComune" value="#{vendor02SedeController.selected.vendor02017coIdComune}" title="#{bundle.EditVendor02SedeTitle_vendor02017coIdComune}" />
+                        <p:outputLabel value="#{bundle.EditVendor02SedeLabel_vendor01Base}" for="vendor01Base" />
+                        <p:selectOneMenu id="vendor01Base" value="#{vendor02SedeController.selected.vendor01Base}" >
+                            <f:selectItem itemLabel="#{bundle.SelectOneMessage}"/>
+                            <f:selectItems value="#{vendor01BaseController.itemsAvailableSelectOne}"
+                                           var="vendor01BaseItem"
+                                           itemValue="#{vendor01BaseItem}"/>
+                        </p:selectOneMenu>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{vendor02SedeController.update}" value="#{bundle.Save}" update="display,:Vendor02SedeListForm:datalist,:growl" oncomplete="handleSubmit(args, 'Vendor02SedeEditDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="Vendor02SedeEditDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

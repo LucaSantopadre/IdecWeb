@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="M1CreateDlg" widgetVar="M1CreateDialog" modal="true" resizable="false" appendTo="@(body)" header="#{bundle.CreateM1Title}">
+            <h:form id="M1CreateForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" rendered="#{m1Controller.selected != null}">
+                        <p:outputLabel value="#{bundle.CreateM1Label_cgTipoMasCod}" for="cgTipoMasCod" />
+                        <p:inputText id="cgTipoMasCod" value="#{m1Controller.selected.cgTipoMasCod}" title="#{bundle.CreateM1Title_cgTipoMasCod}" required="true" requiredMessage="#{bundle.CreateM1RequiredMessage_cgTipoMasCod}"/>
+                        <p:outputLabel value="#{bundle.CreateM1Label_cgTipoMasCodDes}" for="cgTipoMasCodDes" />
+                        <p:inputText id="cgTipoMasCodDes" value="#{m1Controller.selected.cgTipoMasCodDes}" title="#{bundle.CreateM1Title_cgTipoMasCodDes}" required="true" requiredMessage="#{bundle.CreateM1RequiredMessage_cgTipoMasCodDes}"/>
+                        <p:outputLabel value="#{bundle.CreateM1Label_dallaDataAdmin}" for="dallaDataAdmin" />
+                        <p:calendar id="dallaDataAdmin" pattern="MM/dd/yyyy" value="#{m1Controller.selected.dallaDataAdmin}" title="#{bundle.EditM1Title_dallaDataAdmin}" required="true" requiredMessage="#{bundle.EditM1RequiredMessage_dallaDataAdmin}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateM1Label_allaDataAdmin}" for="allaDataAdmin" />
+                        <p:calendar id="allaDataAdmin" pattern="MM/dd/yyyy" value="#{m1Controller.selected.allaDataAdmin}" title="#{bundle.EditM1Title_allaDataAdmin}" required="true" requiredMessage="#{bundle.EditM1RequiredMessage_allaDataAdmin}" showOn="button"/>
+                        <p:outputLabel value="#{bundle.CreateM1Label_admin}" for="admin" />
+                        <p:inputText id="admin" value="#{m1Controller.selected.admin}" title="#{bundle.CreateM1Title_admin}" required="true" requiredMessage="#{bundle.CreateM1RequiredMessage_admin}"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{m1Controller.create}" value="#{bundle.Save}" update="display,:M1ListForm:datalist,:growl" oncomplete="handleSubmit(args,'M1CreateDialog');"/>
+                    <p:commandButton value="#{bundle.Cancel}" onclick="M1CreateDialog.hide()"/>
+                </h:panelGroup>
+            </h:form>
+        </p:dialog>
+
+    </ui:composition>
+</html>

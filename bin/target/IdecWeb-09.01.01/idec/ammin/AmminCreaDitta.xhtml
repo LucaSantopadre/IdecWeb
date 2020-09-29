@@ -1,0 +1,511 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns="http://www.w3.org/1999/xhtml">
+
+    <h:form>
+        <div id="tab">
+            <p:dataTable id="tabDitta0" scrollable="true" scrollHeight="30" style="width:1000px"  var="ditta" value="#{creaDittaController.dittaNuova}" editable="true" editMode="cell">
+                <f:facet name="header">
+                    Dati identificativi
+                </f:facet>
+
+                <p:column headerText="Codice ditta" style="width:32px" >
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.codiceDitta}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.codiceDitta}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Id iva" style="width:32px">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.idPaeseIva}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.idPaeseIva}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Codice iva">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.idCodiceIva}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.idCodiceIva}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Codice fiscale">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.codiceFiscale}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.codiceFiscale}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Denominazione">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.denominazione}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.denominazione}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Cognome">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.cognome}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.cognome}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Nome">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.nome}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.nome}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+            </p:dataTable>
+            <!-- FINE tabella 0 _____________________________________________-->
+
+            <p:dataTable id="tabDitta1" scrollable="true" scrollHeight="30" style="width:900px"  var="ditta" value="#{creaDittaController.dittaNuova}" editable="true" editMode="cell">
+                <f:facet name="header">
+                    Sede
+                </f:facet>
+
+                <p:column headerText="Id" style="width:32px">
+                    <h:outputText value="#{ditta.id}" />
+                </p:column>
+
+                <p:column headerText="Codice ditta" style="width:32px" >
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.codiceDitta}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.codiceDitta}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Indirizzo sede" >
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.idPaeseIva}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.idPaeseIva}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="N. Civico" style="width:32px">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.idCodiceIva}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.idCodiceIva}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="CAP" style="width:32px">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.codiceFiscale}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.codiceFiscale}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Comune sede">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.denominazione}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.denominazione}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Prov. sede" style="width:40px">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.cognome}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.cognome}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Nazione" style="width:40px">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.nome}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.nome}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+            </p:dataTable>
+            <!-- FINE tabella 1 _____________________________________________-->
+
+            <p:dataTable id="tabDitta2" scrollable="true" scrollHeight="30" style="width:900px"  var="ditta" value="#{creaDittaController.dittaNuova}" editable="true" editMode="cell">
+                <f:facet name="header">
+                    Stabile organizzazione
+                </f:facet>
+
+                <p:column headerText="Id" style="width:32px">
+                    <h:outputText value="#{ditta.id}" />
+                </p:column>
+
+                <p:column headerText="Codice ditta" style="width:32px" >
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.codiceDitta}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.codiceDitta}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Indirizzo stab. org." >
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.idPaeseIva}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.idPaeseIva}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="N. Civico" style="width:32px">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.idCodiceIva}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.idCodiceIva}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="CAP" style="width:32px">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.codiceFiscale}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.codiceFiscale}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Comune stab. org.">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.denominazione}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.denominazione}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Prov. stab." style="width:40px">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.cognome}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.cognome}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Nazione" style="width:40px">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.nome}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.nome}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+            </p:dataTable>
+            <!-- FINE tabella 2 _____________________________________________-->
+
+            <p:dataTable id="tabDitta3" scrollable="true" scrollHeight="30" style="width:900px"  var="ditta" value="#{creaDittaController.dittaNuova}" editable="true" editMode="cell">
+                <f:facet name="header">
+                    Rappresentante fiscale
+                </f:facet>
+
+                <p:column headerText="Id" style="width:32px">
+                    <h:outputText value="#{ditta.id}" />
+                </p:column>
+
+                <p:column headerText="Codice ditta" style="width:32px" >
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.codiceDitta}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.codiceDitta}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Id paese" style="width:32px">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.idPaeseIva}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.idPaeseIva}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Codice iva">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.idCodiceIva}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.idCodiceIva}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Denominazione">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.denominazione}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.denominazione}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Cognome">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.cognome}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.cognome}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Nome">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.nome}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.nome}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+            </p:dataTable>
+            <!-- FINE tabella 3 _____________________________________________-->
+
+            <p:dataTable id="tabDitta4" scrollable="true" scrollHeight="30" style="width:900px"  var="ditta" value="#{creaDittaController.dittaNuova}" editable="true" editMode="cell">
+                <f:facet name="header">
+                    Codice attività
+                </f:facet>
+
+                <p:column headerText="Id" style="width:32px">
+                    <h:outputText value="#{ditta.id}" />
+                </p:column>
+
+                <p:column headerText="Codice ditta" style="width:32px" >
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.codiceDitta}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.codiceDitta}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Codice attività" >
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.idPaeseIva}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.idPaeseIva}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+            </p:dataTable>
+            <!-- FINE tabella 4 _____________________________________________-->
+
+
+
+            <p:dataTable id="tabDitta5" scrollable="true" scrollHeight="30" style="width:900px"  var="ditta" value="#{creaDittaController.dittaNuova}" editable="true" editMode="cell">
+                <f:facet name="header">
+                    Adempimenti iva
+                </f:facet>
+
+                <p:column headerText="Id" style="width:32px">
+                    <h:outputText value="#{ditta.id}" />
+                </p:column>
+
+                <p:column headerText="Codice ditta" style="width:32px" >
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.codiceDitta}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.codiceDitta}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Tipo liquidazone">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.idPaeseIva}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.idPaeseIva}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Dalla data">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.idPaeseIva}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.idPaeseIva}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+            </p:dataTable>
+            <!-- FINE tabella 5 _____________________________________________-->
+
+            <p:dataTable id="tabDitta6" scrollable="true" scrollHeight="30" style="width:900px"  var="ditta" value="#{creaDittaController.dittaNuova}" editable="true" editMode="cell">
+                <f:facet name="header">
+                    Regime contabile
+                </f:facet>
+
+                <p:column headerText="Id" style="width:32px">
+                    <h:outputText value="#{ditta.id}" />
+                </p:column>
+
+                <p:column headerText="Codice ditta" style="width:32px" >
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.codiceDitta}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.codiceDitta}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Tipo regime">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.idPaeseIva}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.idPaeseIva}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Dalla data">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.idPaeseIva}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.idPaeseIva}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+            </p:dataTable>
+            <!-- FINE tabella 6 _____________________________________________-->
+
+
+            <p:dataTable id="tabDitta7" scrollable="true" scrollHeight="30" style="width:900px"  var="ditta" value="#{creaDittaController.dittaNuova}" editable="true" editMode="cell">
+                <f:facet name="header">
+                    Camera di commercio
+                </f:facet>
+
+                <p:column headerText="Id" style="width:32px">
+                    <h:outputText value="#{ditta.id}" />
+                </p:column>
+
+                <p:column headerText="Codice ditta" style="width:32px" >
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.codiceDitta}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.codiceDitta}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Data costituzione" style="width:32px">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.idPaeseIva}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.idPaeseIva}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+                
+                <p:column headerText="Data chiusura 1 bil." style="width:32px">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.idPaeseIva}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.idPaeseIva}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+                
+                <p:column headerText="Comune" style="width:32px">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.idPaeseIva}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.idPaeseIva}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Cap">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.idCodiceIva}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.idCodiceIva}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Prov.">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.denominazione}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.denominazione}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Catasto">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.cognome}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.cognome}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Fiscale">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.nome}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.nome}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Regione">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.nome}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.nome}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+            </p:dataTable>
+            <!-- FINE tabella 7 _____________________________________________-->
+
+
+
+            <p:dataTable id="tabDitta8" scrollable="true" scrollHeight="30" style="width:900px"  var="ditta" value="#{creaDittaController.dittaNuova}" editable="true" editMode="cell">
+                <f:facet name="header">
+                    Sviluppo cespite
+                </f:facet>
+
+                <p:column headerText="Id" style="width:32px">
+                    <h:outputText value="#{ditta.id}" />
+                </p:column>
+
+                <p:column headerText="Codice ditta" style="width:32px" >
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.codiceDitta}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.codiceDitta}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Tipo cespite" style="width:32px">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.idPaeseIva}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.idPaeseIva}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="Dalla data">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.idCodiceIva}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.idCodiceIva}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+            </p:dataTable>
+            <!-- FINE tabella 8 _____________________________________________-->
+
+
+            <p:dataTable id="tabDitta9" scrollable="true" scrollHeight="30" style="width:900px"  var="ditta" value="#{creaDittaController.dittaNuova}" editable="true" editMode="cell">
+                <f:facet name="header">
+                    Banca
+                </f:facet>
+
+                <p:column headerText="Id" style="width:32px">
+                    <h:outputText value="#{ditta.id}" />
+                </p:column>
+
+                <p:column headerText="Codice ditta" style="width:32px" >
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.codiceDitta}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.codiceDitta}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="ABI" style="width:32px">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.idPaeseIva}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.idPaeseIva}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="CAB">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.idCodiceIva}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.idCodiceIva}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="CIN">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.idCodiceIva}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.idCodiceIva}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+
+                <p:column headerText="BIC">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.idCodiceIva}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.idCodiceIva}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+                
+                <p:column headerText="IBAN">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.idCodiceIva}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.idCodiceIva}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+                
+                <p:column headerText="Conto corrente">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.idCodiceIva}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.idCodiceIva}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+                
+                <p:column headerText="Cod. banca">
+                    <p:cellEditor>
+                        <f:facet name="output"><h:outputText value="#{ditta.idCodiceIva}" /></f:facet>
+                        <f:facet name="input"><p:inputText value="#{ditta.idCodiceIva}" style="width:100%"/></f:facet>
+                    </p:cellEditor>
+                </p:column>
+            </p:dataTable>
+            <!-- FINE tabella 9 _____________________________________________-->
+
+            <p:commandButton value="Registra" actionListener="#{creaDittaController.creaDittaNew()}"/>
+        </div>
+    </h:form>
+</ui:composition>
